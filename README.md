@@ -1,27 +1,17 @@
 # BeenThere
+LauchCode LiftOff December 2022 cohort capstone project.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.
+### Overview
+BeenThere is a digital travel journal that allows users to see a map of the world, drop "pins" in places they have been, and log information about their experiences in that place, including date(s), location(s), people traveled with, details, and pictures.
 
-## Development server
+This project was motivated by the desire of the members of the group to have a way to log experiences and connections with friends and family in order to revist and reminisce about the past, either alone or with others.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Features
+- Create and edit logs: Users will be able to create new logs with a mixture of required (location, date) and optional fields (details, people traveled with, pictures, etc).
+- User login/authentication: Users will be able to create accounts and log into the application. Each user will have a unique profile and map.
+- Delete logs: Users will be able to delete logs or trips.
+- Shareable link: Users will be able to generate a shareable link to their map that can be shared with others.
+- Comments on Logs: Non-users will be able to add comments to user logs.
+- View timeline of logs and trips: Users will be able to view a listing of all logs and trips, ordered by date (either most recent or least recent).
+- Search: Users will be able to search for logs containing given text. 
+- Group logs together into trips: Users will be able to group a set of logs together into one trip (ex: logs in Italy, Spain, and France may be grouped together into a trip of Europe).
