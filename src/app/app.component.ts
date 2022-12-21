@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MapMarker } from '@angular/google-maps';
 import { Loader } from '@googlemaps/js-api-loader';
 import { map } from 'rxjs';
 
@@ -24,13 +25,23 @@ export class AppComponent implements OnInit{
         fullscreenControl: false,
       });
 
-      let marker = new google.maps.Marker({
-        position: {lat: 38.6272700, lng: -90.1978900},
-        map: map,
-        icon: "https://img.icons8.com/tiny-color/32/null/map-pin.png",
-        draggable: true
-      }); 
-      
+      function placeMarker(position: any, map: google.maps.Map) {
+        let marker = new google.maps.Marker({
+          position: position,
+          map: map,
+          icon: "https://img.icons8.com/tiny-color/32/null/map-pin.png",
+          draggable: true
+        });  
+        infoWindow.open({
+          anchor: marker,
+          map,
+        });
+      };
+
+      google.maps.event.addListener(map, 'click', function(event: { latLng: any; }) {
+        placeMarker(event.latLng, map);
+        });
+
         let content = 
         "<h2>Create New Pin</h2>" +
           "<form>" +
@@ -57,18 +68,11 @@ export class AppComponent implements OnInit{
             "<input type='submit' value='Create Pin'>" +
             "<br>" +
           "</form>"
-
-      let infoWindow = new google.maps.InfoWindow({
-        content: content,
-      })
-
-      marker.addListener("click", function() {
-        infoWindow.open({
-          anchor: marker,
-          map,
-        });
+      
+        let infoWindow = new google.maps.InfoWindow({
+          content: content,
+        })
       });
-    });
+    };
   };
-};
 
