@@ -35,11 +35,11 @@ export class AppComponent implements OnInit{
         const marker = new google.maps.Marker({
           position,
           map,
-        });
+        })
       }
-      });
-    }
-  }   
+    })
+  }
+}   
  
   
   
