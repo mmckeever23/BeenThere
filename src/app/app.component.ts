@@ -19,6 +19,7 @@ export class AppComponent implements OnInit{
     let map: google.maps.Map;
 
     loader.load().then(() => {
+      
       map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
         center: { lat: 0, lng: 0 },
         zoom: 2,
@@ -26,9 +27,16 @@ export class AppComponent implements OnInit{
         fullscreenControl: false,
       });
 
-      
+      map.addListener("click", (event: google.maps.MapMouseEvent) => {
+        addMarker(event.latLng!);
+        });
 
-
+      function addMarker(position: google.maps.LatLng | google.maps.LatLngLiteral) {
+        const marker = new google.maps.Marker({
+          position,
+          map,
+        });
+      }
       });
     }
   }   
