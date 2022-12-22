@@ -1,3 +1,4 @@
+import { formatCurrency } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Loader } from '@googlemaps/js-api-loader';
 
@@ -35,12 +36,45 @@ export class AppComponent implements OnInit{
         const marker = new google.maps.Marker({
           position,
           map,
+          icon: "https://img.icons8.com/tiny-color/32/null/map-pin.png",
+          draggable: true
         })
-
-      
-      
-        
+        infoWindow.open({
+          anchor: marker,
+          map,
+        }) 
       }
+
+      let form = 
+        "<h2>Create New Pin</h2>" +
+          "<form>" +
+            "<label>Location: </label>" +
+            "<input type='text' required><br>" +
+            "<br>" +
+            "<label>Date Arrived: </label>" +
+            "<input type='date' required><br>" +
+            "<br>" +
+            "<label>Date Departed: </label>" +
+            "<input type='date' required><br>" +
+            "<br>" +
+            "<label>Companions: </label><br>" +
+            "<input type='checkbox'>" +
+            "<label>Mom</label><br>" +
+            "<input type='checkbox'>" +
+            "<label>Dad</label><br>" +
+            "<input type='checkbox'>" +
+            "<label>Julie</label><br>" +
+            "<p style='margin-left: 13px'>+ Add Companion</p>" +
+            "<label>Details: </label><br>" +
+            "<textarea placeholder='What did you do there?' rows='10' cols='29'></textarea><br>" +
+            "<br>" +
+            "<input type='submit' value='Create Pin'>" +
+            "<br>" +
+          "</form>"
+
+      const infoWindow = new google.maps.InfoWindow({
+        content: form, 
+      })
     })
   }
 }   
