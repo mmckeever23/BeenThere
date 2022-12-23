@@ -11,24 +11,25 @@ import { Loader } from '@googlemaps/js-api-loader';
 export class AppComponent implements OnInit{
   title = 'BeenThere';
 
-  //Google Maps JavaScript API Loader
+//Google Maps JavaScript API Loader
 
   ngOnInit():void {
     const loader = new Loader({
       apiKey: 'AIzaSyBytbyDdTAD1-nmC-GG9KOUgRiLGoA06ZI',
-      libraries: ["places"]
+      libraries: ["places"],
     })
 
-    //Declaration of Google Maps objects
+//Declaration of Google Maps objects
 
     let map: google.maps.Map;
     let service: google.maps.places.PlacesService;
     let infowindow: google.maps.InfoWindow;
 
+//Load function
+
     loader.load().then(() => {
       
-      //Load map
-
+//Load map
       map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
         center: { lat: 0, lng: 0 },
         zoom: 2,
@@ -36,13 +37,79 @@ export class AppComponent implements OnInit{
         fullscreenControl: false,
       });
 
-      //Event listener for dropping pin
+// Create the search box and link it to the UI element.
+
+  const input = document.getElementById("pac-input") as HTMLInputElement;
+  const searchBox = new google.maps.places.SearchBox(input);
+
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+// Bias the SearchBox results towards current map's viewport.
+
+  map.addListener("bounds_changed", () => {
+    searchBox.setBounds(map.getBounds() as google.maps.LatLngBounds);
+  });
+
+  let markers: google.maps.Marker[] = [];
+
+// Listen for the event fired when the user selects a prediction and retrieve more details for that place.
+  searchBox.addListener("places_changed", () => {
+    const places: any = searchBox.getPlaces();
+
+    if (places.length == 0) {
+      return;
+    }
+
+    // Clear out the old markers.
+    markers.forEach((marker) => {
+      marker.setMap(null);
+    });
+    markers = [];
+
+    // For each place, get the icon, name and location.
+    const bounds = new google.maps.LatLngBounds();
+
+    places.forEach((place: any) => {
+      if (!place.geometry || !place.geometry.location) {
+        console.log("Returned place contains no geometry");
+        return;
+      }
+
+      const icon = {
+        url: place.icon as string,
+        size: new google.maps.Size(71, 71),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(17, 34),
+        scaledSize: new google.maps.Size(25, 25),
+      };
+
+      // Create a marker for each place.
+      markers.push(
+        new google.maps.Marker({
+          map,
+          icon,
+          title: place.name,
+          position: place.geometry.location,
+        })
+      );
+
+      if (place.geometry.viewport) {
+        // Only geocodes have viewport.
+        bounds.union(place.geometry.viewport);
+      } else {
+        bounds.extend(place.geometry.location);
+      }
+    })
+    map.fitBounds(bounds);
+  })
+
+//Event listener for dropping pin
 
       map.addListener("click", (event: google.maps.MapMouseEvent) => {
         addMarker(event.latLng!);
         });
 
-      //Function for dropping pin
+//Function for dropping pin
 
       function addMarker(position: google.maps.LatLng | google.maps.LatLngLiteral) {
         const marker = new google.maps.Marker({
@@ -57,7 +124,7 @@ export class AppComponent implements OnInit{
         }) 
       }
 
-      //New Pin form
+//New Pin form
 
       let form = 
         "<h2>Create New Pin</h2>" +
@@ -86,7 +153,7 @@ export class AppComponent implements OnInit{
             "<br>" +
           "</form>"
 
-      //Info Window with New Pin form
+//Info Window with New Pin form
 
       const infoWindow = new google.maps.InfoWindow({
         content: form, 
