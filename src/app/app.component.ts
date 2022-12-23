@@ -11,16 +11,24 @@ import { Loader } from '@googlemaps/js-api-loader';
 export class AppComponent implements OnInit{
   title = 'BeenThere';
 
+  //Google Maps JavaScript API Loader
+
   ngOnInit():void {
     const loader = new Loader({
       apiKey: 'AIzaSyBytbyDdTAD1-nmC-GG9KOUgRiLGoA06ZI',
       libraries: ["places"]
     })
 
+    //Declaration of Google Maps objects
+
     let map: google.maps.Map;
+    let service: google.maps.places.PlacesService;
+    let infowindow: google.maps.InfoWindow;
 
     loader.load().then(() => {
       
+      //Load map
+
       map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
         center: { lat: 0, lng: 0 },
         zoom: 2,
@@ -28,9 +36,13 @@ export class AppComponent implements OnInit{
         fullscreenControl: false,
       });
 
+      //Event listener for dropping pin
+
       map.addListener("click", (event: google.maps.MapMouseEvent) => {
         addMarker(event.latLng!);
         });
+
+      //Function for dropping pin
 
       function addMarker(position: google.maps.LatLng | google.maps.LatLngLiteral) {
         const marker = new google.maps.Marker({
@@ -44,6 +56,8 @@ export class AppComponent implements OnInit{
           map,
         }) 
       }
+
+      //New Pin form
 
       let form = 
         "<h2>Create New Pin</h2>" +
@@ -71,6 +85,8 @@ export class AppComponent implements OnInit{
             "<input type='submit' value='Create Pin'>" +
             "<br>" +
           "</form>"
+
+      //Info Window with New Pin form
 
       const infoWindow = new google.maps.InfoWindow({
         content: form, 
