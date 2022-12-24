@@ -1,4 +1,3 @@
-import { formatCurrency } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Loader } from '@googlemaps/js-api-loader';
 
@@ -22,6 +21,7 @@ export class AppComponent implements OnInit{
 //Declaration of Google Map objects
 
     let map: google.maps.Map;
+    let markers: google.maps.Marker[] = [];
 
 //Load function
 
@@ -30,10 +30,20 @@ export class AppComponent implements OnInit{
 //Load map
 
       map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
-        center: { lat: 24, lng: 0 },
-        zoom: 2,
+        center: { lat: 40, lng: 10 },
+        zoom: 2.5,
+        minZoom: 2.5,
         streetViewControl: false,
         fullscreenControl: false,
+        gestureHandling: "greedy",
+        restriction: {
+          latLngBounds: {
+              north: 85,
+              south: -85,
+              west: -180,
+              east: 180
+          }
+        }
       });
 
 // Create the search box and link it to the UI element.
@@ -53,30 +63,10 @@ export class AppComponent implements OnInit{
         return;
       }
 
-// Create a marker for each place.
+// Declare Info Window
 
-      const infowindow: any = new google.maps.InfoWindow({
-        content: form,
-      });
-
-      const marker: any = new google.maps.Marker({
-          map,
-          icon: "https://img.icons8.com/tiny-color/32/null/map-pin.png",
-          title: place.name,
-          position: place.geometry.location,
-          draggable: true
-          })
-          infowindow.open({
-            anchor: marker,
-            map,
-          })
-        })
-      })
-
-//New Pin form
-
-      let form = 
-      "<h2>Create New Pin</h2>" +
+      const infowindow = new google.maps.InfoWindow({
+        content: "<h2>Create New Pin</h2>" +
         "<form>" +
           "<label>Location: </label>" +
           "<input type='text' required><br>" +
@@ -100,8 +90,34 @@ export class AppComponent implements OnInit{
           "<br>" +
           "<input type='submit' value='Create Pin'>" +
           "<br>" +
-        "</form>"
+        "</form>",
+      });
 
+// Create a marker, click handler for pre-existing markers
+
+      const marker = new google.maps.Marker({
+          map,
+          icon: "https://img.icons8.com/tiny-color/32/null/map-pin.png",
+          title: place.name,
+          position: place.geometry.location,
+          draggable: true,
+          animation: google.maps.Animation.DROP,
+          })
+          infowindow.open({
+            anchor: marker,
+            map,
+          })
+          markers.push(marker);
+          map.setCenter(marker.getPosition() as google.maps.LatLng);
+          marker.addListener("click", () => {
+            map.setCenter(marker.getPosition() as google.maps.LatLng);
+            infowindow.open({
+              anchor: marker,
+              map,
+            })
+          })
+        })
+      })
     })
   }
 }   
