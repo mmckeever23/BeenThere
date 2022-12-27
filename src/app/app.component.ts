@@ -30,9 +30,9 @@ export class AppComponent implements OnInit{
 //Load map
 
       map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
-        center: { lat: 40, lng: 10 },
-        zoom: 2.5,
-        minZoom: 2.5,
+        center: { lat: 35, lng: 5 },
+        zoom: 3,
+        minZoom: 2,
         streetViewControl: false,
         fullscreenControl: false,
         gestureHandling: "greedy",
@@ -66,31 +66,33 @@ export class AppComponent implements OnInit{
 // Declare Info Window
 
       const infowindow = new google.maps.InfoWindow({
-        content: "<h2>Create New Pin</h2>" +
-        "<form>" +
-          "<label>Location: </label>" +
-          "<input type='text' required><br>" +
-          "<br>" +
-          "<label>Date Arrived: </label>" +
-          "<input type='date' required><br>" +
-          "<br>" +
-          "<label>Date Departed: </label>" +
-          "<input type='date' required><br>" +
-          "<br>" +
-          "<label>Companions: </label><br>" +
-          "<input type='checkbox'>" +
-          "<label>Mom</label><br>" +
-          "<input type='checkbox'>" +
-          "<label>Dad</label><br>" +
-          "<input type='checkbox'>" +
-          "<label>Julie</label><br>" +
-          "<p style='margin-left: 13px'>+ Add Companion</p>" +
-          "<label>Details: </label><br>" +
-          "<textarea placeholder='What did you do there?' rows='10' cols='29'></textarea><br>" +
-          "<br>" +
-          "<input type='submit' value='Create Pin'>" +
-          "<br>" +
-        "</form>",
+        position: place.geometry.location,
+        content: place.name,
+        // "<h2>Create New Pin</h2>" +
+        //   "<form>" +
+        //     "<label>Location: </label>" +
+        //     "<input type='text' required><br>" +
+        //     "<br>" +
+        //     "<label>Date Arrived: </label>" +
+        //     "<input type='date' required><br>" +
+        //     "<br>" +
+        //     "<label>Date Departed: </label>" +
+        //     "<input type='date' required><br>" +
+        //     "<br>" +
+        //     "<label>Companions: </label><br>" +
+        //     "<input type='checkbox'>" +
+        //     "<label>Mom</label><br>" +
+        //     "<input type='checkbox'>" +
+        //     "<label>Dad</label><br>" +
+        //     "<input type='checkbox'>" +
+        //     "<label>Julie</label><br>" +
+        //     "<p style='margin-left: 13px'>+ Add Companion</p>" +
+        //     "<label>Details: </label><br>" +
+        //     "<textarea placeholder='What did you do there?' rows='10' cols='29'></textarea><br>" +
+        //     "<br>" +
+        //     "<input type='submit' value='Create Pin'>" +
+        //     "<br>" +
+        //   "</form>"
       });
 
 // Create a marker, click handler for pre-existing markers
@@ -100,7 +102,6 @@ export class AppComponent implements OnInit{
           icon: "https://img.icons8.com/tiny-color/32/null/map-pin.png",
           title: place.name,
           position: place.geometry.location,
-          draggable: true,
           animation: google.maps.Animation.DROP,
           })
           infowindow.open({
