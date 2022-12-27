@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Loader } from '@googlemaps/js-api-loader';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ModalComponent } from './components/modal/modal.component';
+import { ModalComponent } from './modal/modal.component';
 
 @Component({
   selector: 'app-root',
@@ -11,13 +11,14 @@ import { ModalComponent } from './components/modal/modal.component';
 
 export class AppComponent implements OnInit{
   title = 'BeenThere';
+  // place = google.maps.places.Place;
 
-//Modal
+  //Modal
 
   constructor(private modalService: NgbModal) {}
 
     openModal() {
-      const modalRef = this.modalService.open(ModalComponent);
+      const modalRef = this.modalService.open(ModalComponent, {size: 'lg', backdrop: 'static'});
     }
 
 //Google Maps JavaScript API Loader
@@ -29,7 +30,6 @@ export class AppComponent implements OnInit{
     })
 
 //Declaration of Google Map objects
-
     let map: google.maps.Map;
     let markers: google.maps.Marker[] = [];
 
@@ -73,38 +73,6 @@ export class AppComponent implements OnInit{
         return;
       }
 
-// Declare Info Window
-
-      // const infowindow = new google.maps.InfoWindow({
-      //   position: place.geometry.location,
-      //   content: place.name,
-      //   "<h2>Create New Pin</h2>" +
-      //     "<form>" +
-      //       "<label>Location: </label>" +
-      //       "<input type='text' required><br>" +
-      //       "<br>" +
-      //       "<label>Date Arrived: </label>" +
-      //       "<input type='date' required><br>" +
-      //       "<br>" +
-      //       "<label>Date Departed: </label>" +
-      //       "<input type='date' required><br>" +
-      //       "<br>" +
-      //       "<label>Companions: </label><br>" +
-      //       "<input type='checkbox'>" +
-      //       "<label>Mom</label><br>" +
-      //       "<input type='checkbox'>" +
-      //       "<label>Dad</label><br>" +
-      //       "<input type='checkbox'>" +
-      //       "<label>Julie</label><br>" +
-      //       "<p style='margin-left: 13px'>+ Add Companion</p>" +
-      //       "<label>Details: </label><br>" +
-      //       "<textarea placeholder='What did you do there?' rows='10' cols='29'></textarea><br>" +
-      //       "<br>" +
-      //       "<input type='submit' value='Create Pin'>" +
-      //       "<br>" +
-      //     "</form>"
-      // });
-
 // Create a marker, click handler for pre-existing markers
 
       const marker = new google.maps.Marker({
@@ -114,19 +82,11 @@ export class AppComponent implements OnInit{
           position: place.geometry.location,
           animation: google.maps.Animation.DROP,
           })
-          this.openModal();
-          // infowindow.open({
-          //   anchor: marker,
-          //   map,
-          // })
           map.setCenter(marker.getPosition() as google.maps.LatLng);
+          setTimeout(()=>{this.openModal()}, 1000);
           marker.addListener("click", () => {
-            map.setCenter(marker.getPosition() as google.maps.LatLng);
-            this.openModal();
-            // infowindow.open({
-            //   anchor: marker,
-            //   map,
-            // })
+          map.setCenter(marker.getPosition() as google.maps.LatLng);
+          this.openModal();
           markers.push(marker);
           })
         })
