@@ -13,7 +13,7 @@ implements OnInit
 
   @Input() hero: any;
 
-  // constructor(public activeModal: NgbActiveModal) {}
+  constructor(public activeModal: NgbActiveModal) {}
 
   ngOnInit(): void {}
 
