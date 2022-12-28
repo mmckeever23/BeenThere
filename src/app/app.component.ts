@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Loader } from '@googlemaps/js-api-loader';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalComponent } from './modal/modal.component';
 
 @Component({
   selector: 'app-root',
@@ -9,71 +11,106 @@ import { Loader } from '@googlemaps/js-api-loader';
 
 export class AppComponent implements OnInit{
   title = 'BeenThere';
+  // place = google.maps.places.Place;
+
+//Modal
+
+  constructor(private modalService: NgbModal) {}
+
+    openModal() {
+      const modalRef = this.modalService.open(ModalComponent, {size: 'lg', backdrop: 'static'});
+    }
+
+//Google Maps JavaScript API Loader
 
   ngOnInit():void {
-    let loader = new Loader({
+    const loader = new Loader({
       apiKey: 'AIzaSyBytbyDdTAD1-nmC-GG9KOUgRiLGoA06ZI',
-      libraries: ['places']
+      libraries: ["places"],
     })
 
+//Declaration of Google Map objects
+    let map: google.maps.Map;
+    let markers: google.maps.Marker[] = [];
+
+//Load function
+
     loader.load().then(() => {
-      let map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
-        center: { lat: 0, lng: 0 },
-        zoom: 2,
+      
+//Load map
+
+      map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
+        center: { lat: 35, lng: 5 },
+        zoom: 3,
+        minZoom: 2,
         streetViewControl: false,
         fullscreenControl: false,
+        gestureHandling: "greedy",
+        restriction: {
+          latLngBounds: {
+              north: 85,
+              south: -85,
+              west: -180,
+              east: 180
+          }
+        }
       });
 
-      function placeMarker(position: any, map: google.maps.Map) {
-        let marker = new google.maps.Marker({
-          position: position,
-          map: map,
-          icon: "https://img.icons8.com/tiny-color/32/null/map-pin.png",
-          draggable: true
-        });  
-        infoWindow.open({
-          anchor: marker,
+// Create the search box and link it to the UI element.
+
+  const input = document.getElementById("pac-input") as HTMLInputElement;
+  const searchBox = new google.maps.places.SearchBox(input);
+
+// Listen for the event fired when the user selects a prediction and retrieve more details for that place.
+  searchBox.addListener("places_changed", () => {
+    const places: any = searchBox.getPlaces();
+
+// For each place, get the icon, name and location.
+
+    places.forEach((place: any) => {
+      if (!place.geometry || !place.geometry.location) {
+        console.log("Returned place contains no geometry");
+        return;
+      }
+
+// Create a marker, click handler for pre-existing markers
+
+      const marker = new google.maps.Marker({
           map,
-        });
-      };
-
-      google.maps.event.addListener(map, 'click', function(event: { latLng: any; }) {
-        placeMarker(event.latLng, map);
-        });
-
-        let content = 
-        "<h2>Create New Pin</h2>" +
-          "<form>" +
-            "<label>Location: </label>" +
-            "<input type='text' required><br>" +
-            "<br>" +
-            "<label>Date Arrived: </label>" +
-            "<input type='date' required><br>" +
-            "<br>" +
-            "<label>Date Departed: </label>" +
-            "<input type='date' required><br>" +
-            "<br>" +
-            "<label>Companions: </label><br>" +
-            "<input type='checkbox'>" +
-            "<label>Mom</label><br>" +
-            "<input type='checkbox'>" +
-            "<label>Dad</label><br>" +
-            "<input type='checkbox'>" +
-            "<label>Julie</label><br>" +
-            "<p style='margin-left: 13px'>+ Add Companion</p>" +
-            "<label>Details: </label><br>" +
-            "<textarea placeholder='What did you do there?' rows='10' cols='29'></textarea><br>" +
-            "<br>" +
-            "<input type='submit' value='Create Pin'>" +
-            "<br>" +
-          "</form>"
-      
-        let infoWindow = new google.maps.InfoWindow({
-          content: content,
+          icon: "https://img.icons8.com/tiny-color/32/null/map-pin.png",
+          title: place.name,
+          position: place.geometry.location,
+          animation: google.maps.Animation.DROP,
+          })
+          map.setCenter(marker.getPosition() as google.maps.LatLng);
+          setTimeout(()=>{this.openModal()}, 1000);
+          marker.addListener("click", () => {
+          map.setCenter(marker.getPosition() as google.maps.LatLng);
+          this.openModal();
+          markers.push(marker);
+          })
         })
-      });
-    }
-  }   
+
+        function setMapOnAll(map: google.maps.Map | null) {
+          for (let i = 0; i < markers.length; i++) {
+            markers[i].setMap(map);
+          }
+        }
+
+        function hideMarkers(): void {
+          setMapOnAll(null);
+        }
+
+        function deleteMarkers(): void {
+          hideMarkers();
+          markers = [];
+        }
+      })
+    })
+  }
+}   
+
+
  
   
   
