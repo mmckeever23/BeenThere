@@ -1,6 +1,6 @@
 <div class="modal-content">
     <div class="modal-header">
-        <h4 class="modal-title">Create New Pin</h4>
+        <h4 class="modal-title">Create New Pin for {{hero}}</h4>
     </div>
     <input type="text" class="form-control" placeholder="What was the occassion for this trip?">
     <input type="date" class="form-control w-25" >
@@ -9,9 +9,8 @@
     <div class="modal-footer">
         <button type="button" class="btn btn btn-primary" data-dismiss="modal">Edit Pin Details</button>
         <button type="button" class="btn btn btn-success" data-dismiss="modal">Save Pin Details</button>
-        <button type="button" class="btn btn-warning" (click)="activeModal.dismiss('Cross click')">Discard Changes & Close</button>
+        <!-- <button type="button" class="btn btn-warning" (click)="activeModal.dismiss('Cross click')">Discard Changes & Close</button> -->
         <button type="button" class="btn btn-danger">Delete Pin</button>
-        <!-- (click)="deleteMarkers()" -->
     </div>
     
   </div>

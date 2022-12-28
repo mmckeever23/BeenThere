@@ -11,7 +11,9 @@ import { ModalComponent } from './modal/modal.component';
 
 export class AppComponent implements OnInit{
   title = 'BeenThere';
-  // place = google.maps.places.Place;
+  data = 'St. Louis'
+  // data = google.maps.places.Place.name;
+  
 
 //Modal
 
@@ -62,6 +64,7 @@ export class AppComponent implements OnInit{
   const searchBox = new google.maps.places.SearchBox(input);
 
 // Listen for the event fired when the user selects a prediction and retrieve more details for that place.
+
   searchBox.addListener("places_changed", () => {
     const places: any = searchBox.getPlaces();
 
@@ -90,21 +93,6 @@ export class AppComponent implements OnInit{
           markers.push(marker);
           })
         })
-
-        function setMapOnAll(map: google.maps.Map | null) {
-          for (let i = 0; i < markers.length; i++) {
-            markers[i].setMap(map);
-          }
-        }
-
-        function hideMarkers(): void {
-          setMapOnAll(null);
-        }
-
-        function deleteMarkers(): void {
-          hideMarkers();
-          markers = [];
-        }
       })
     })
   }
