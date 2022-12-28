@@ -11,7 +11,6 @@ import { ModalComponent } from './modal/modal.component';
 
 export class AppComponent implements OnInit{
   title = 'BeenThere';
-  // place = google.maps.places.Place;
 
 //Modal
 
@@ -90,21 +89,6 @@ export class AppComponent implements OnInit{
           markers.push(marker);
           })
         })
-
-        function setMapOnAll(map: google.maps.Map | null) {
-          for (let i = 0; i < markers.length; i++) {
-            markers[i].setMap(map);
-          }
-        }
-
-        function hideMarkers(): void {
-          setMapOnAll(null);
-        }
-
-        function deleteMarkers(): void {
-          hideMarkers();
-          markers = [];
-        }
       })
     })
   }
