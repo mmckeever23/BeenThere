@@ -11,9 +11,9 @@ export class ModalComponent
 implements OnInit 
 {
 
-  @Input() hero: any;
+  @Input() location: any;
 
-  // constructor(public activeModal: NgbActiveModal) {}
+  constructor(public activeModal: NgbActiveModal) {}
 
   ngOnInit(): void {}
 
