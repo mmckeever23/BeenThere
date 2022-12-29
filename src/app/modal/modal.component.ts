@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-modal',
@@ -7,11 +7,9 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./modal.component.css']
 })
 
-export class ModalComponent 
-implements OnInit 
-{
+export class ModalComponent implements OnInit {
 
-  @Input() location: any;
+  @Input() data: any;
 
   constructor(public activeModal: NgbActiveModal) {}
 

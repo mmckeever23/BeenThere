@@ -22,6 +22,7 @@ import { ModalComponent } from './modal/modal.component';
   ],
   providers: [NgbActiveModal],
   bootstrap: [AppComponent],
+  entryComponents: [ModalComponent],
   exports: [AppComponent]
 })
 export class AppModule { }

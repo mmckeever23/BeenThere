@@ -13,7 +13,6 @@ export class AppComponent implements OnInit{
   title = 'BeenThere';
   data = 'St. Louis';
   // data = google.maps.places.Place.name;
-  
 
 //Modal
 
@@ -21,6 +20,7 @@ export class AppComponent implements OnInit{
 
     openModal() {
       const modalRef = this.modalService.open(ModalComponent, {size: 'lg', backdrop: 'static'});
+      modalRef.componentInstance.data = this.data;
     }
 
 //Google Maps JavaScript API Loader
