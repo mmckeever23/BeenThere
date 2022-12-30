@@ -11,15 +11,15 @@ import { ModalComponent } from './modal/modal.component';
 
 export class AppComponent implements OnInit{
   title = 'BeenThere';
-  data = 'St. Louis'
 
 //Modal
 
   constructor(private modalService: NgbModal) {}
 
-    openModal() {
-      const modalRef = this.modalService.open(ModalComponent, {size: 'lg', backdrop: 'static'});
-    }
+  openModal() {
+    const modalRef = this.modalService.open(ModalComponent, {size: 'lg', backdrop: 'static'});
+    modalRef.componentInstance.data = this.data;
+  }
 
 //Google Maps JavaScript API Loader
 
@@ -58,38 +58,38 @@ export class AppComponent implements OnInit{
 
 // Create the search box and link it to the UI element.
 
-  const input = document.getElementById("pac-input") as HTMLInputElement;
-  const searchBox = new google.maps.places.SearchBox(input);
+      const input = document.getElementById("pac-input") as HTMLInputElement;
+      const searchBox = new google.maps.places.SearchBox(input);
 
 // Listen for the event fired when the user selects a prediction and retrieve more details for that place.
 
-  searchBox.addListener("places_changed", () => {
-    const places: any = searchBox.getPlaces();
+      searchBox.addListener("places_changed", () => {
+        const places: any = searchBox.getPlaces();
 
 // For each place, get the icon, name and location.
 
-    places.forEach((place: any) => {
-      if (!place.geometry || !place.geometry.location) {
-        console.log("Returned place contains no geometry");
-        return;
-      }
+        places.forEach((place: any) => {
 
 // Create a marker, click handler for pre-existing markers
 
-      const marker = new google.maps.Marker({
-          map,
-          icon: "https://img.icons8.com/tiny-color/32/null/map-pin.png",
-          title: place.name,
-          position: place.geometry.location,
-          animation: google.maps.Animation.DROP,
-          })
+          const marker = new google.maps.Marker({
+            map,
+            icon: "https://img.icons8.com/tiny-color/32/null/map-pin.png",
+            title: place.name,
+            position: place.geometry.location,
+            animation: google.maps.Animation.DROP,
+            })
+          this.data=place.name;
           map.setCenter(marker.getPosition() as google.maps.LatLng);
           setTimeout(()=>{this.openModal()}, 1000);
+          
+
           marker.addListener("click", () => {
-          map.setCenter(marker.getPosition() as google.maps.LatLng);
-          this.openModal();
+            this.data=place.name;
+            map.setCenter(marker.getPosition() as google.maps.LatLng);
+            this.openModal();
+            })
           markers.push(marker);
-          })
         })
       })
     })
@@ -97,7 +97,5 @@ export class AppComponent implements OnInit{
 }   
 
 
- 
-  
-  
+
 
