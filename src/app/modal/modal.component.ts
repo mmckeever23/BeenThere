@@ -7,8 +7,11 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./modal.component.css']
 })
 
-export class ModalComponent implements OnInit {
-  @Input() data!:string
+export class ModalComponent 
+implements OnInit 
+{
+
+  @Input() hero: any;
 
   constructor(public activeModal: NgbActiveModal) {}
 

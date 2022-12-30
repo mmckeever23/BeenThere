@@ -1,4 +1,21 @@
 .full {
     width: auto;
-    height: 90vh;
+    height: 92vh;
 }
+
+.navbar {
+    background-color: #337AB7;
+    padding-left: 10px;
+    padding-right: 15px;
+}
+
+.navbar-brand {
+    color: white;
+    font-size: 25px;
+    margin-top: 5px;
+}
+
+.form-control {
+    width: 400px;
+}
+

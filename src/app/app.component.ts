@@ -11,6 +11,7 @@ import { ModalComponent } from './modal/modal.component';
 
 export class AppComponent implements OnInit{
   title = 'BeenThere';
+  data = 'St. Louis'
 
 //Modal
 
@@ -61,6 +62,7 @@ export class AppComponent implements OnInit{
   const searchBox = new google.maps.places.SearchBox(input);
 
 // Listen for the event fired when the user selects a prediction and retrieve more details for that place.
+
   searchBox.addListener("places_changed", () => {
     const places: any = searchBox.getPlaces();
 
