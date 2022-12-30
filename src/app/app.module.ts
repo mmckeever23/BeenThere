@@ -10,7 +10,7 @@ import { ModalComponent } from './modal/modal.component';
 @NgModule({
   declarations: [
     AppComponent,
-    ModalComponent
+    ModalComponent,
   ],
   imports: [
     BrowserModule,

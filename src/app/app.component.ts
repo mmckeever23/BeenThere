@@ -11,7 +11,6 @@ import { ModalComponent } from './modal/modal.component';
 
 export class AppComponent implements OnInit{
   title = 'BeenThere';
-  data = 'St. Louis';
 
 //Modal
 

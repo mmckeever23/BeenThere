@@ -1,45 +1,4 @@
-  input {
-    font-size: 16px;
-    float: right;
-    margin-right: 20px;
-    margin-top: 19px;
-  }
 
-  .topnav {
-    background-color: darkgreen;
-    overflow: hidden;
-    width: auto;
-    display: block;
-    padding: 0;
-  }
-
-  .topnav a {
-    font-family: "Roboto", sans-serif;
-    font-size: 30px;
-    background-color: darkgreen;
-    color: white;
-    float: left;
-    text-align: center;
-    padding: 14px 20px;
-    text-decoration: none;
-    font-weight: bold;
-  }
-
-  .topnav b {
-    font-family: "Roboto", sans-serif;
-    font-size: 20px;
-    background-color: darkgreen;
-    color: white;
-    float: left;
-    text-align: center;
-    padding: 20px 20px;
-    font-weight: normal;
-  }
-
-  .topnav b:hover {
-    background-color: white;
-    color: darkgreen;
-  }
 
 
   
