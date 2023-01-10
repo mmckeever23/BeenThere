@@ -29,6 +29,10 @@ export class AppComponent implements OnInit{
     modalRef.componentInstance.data = this.data;
   }
 
+  closeLoginModal() {
+    this.modalService.dismissAll();
+  }
+
 // Google Maps JavaScript API Loader
 
   ngOnInit():void {
