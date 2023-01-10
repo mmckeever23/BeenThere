@@ -1,0 +1,16 @@
+.modal-header {
+    background-color: #337AB7;
+    color:#FFF;
+    justify-content: center;
+}
+
+.form-control {
+    margin: 20px;
+    width: 91%;
+
+}
+
+h4 {
+    margin-top: 5px;
+}
+

@@ -1,0 +1,19 @@
+<form #login="ngForm">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4>Welcome to BeenThere!</h4>
+        </div>
+            <div class="container">
+                <input type="text" [(ngModel)]="user.userId" class="form-control" placeholder="Username" id="userId" name="UserId">
+                <input type="password" [(ngModel)]="user.password" class="form-control" placeholder="Password" id="password" name="password">
+            </div>
+            <div class="modal-footer">
+                <form>
+                    <button type="submit" class="btn btn-primary">Create Account</button>
+                </form>
+                <form (ngSubmit)="userLogin()">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+            </div>  
+    </div>
+    </form>
