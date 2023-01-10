@@ -10,13 +10,11 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 })
 export class UserLoginComponent implements OnInit {
 
-
   user:User = new User();
 
   constructor(private loginuserservice: LoginuserService, 
     // private modalReference: NgbModalRef
     ) {}
-
 
   ngOnInit(): void {      
   }

@@ -15,7 +15,7 @@ export class AppComponent implements OnInit{
   title = 'frontend';
   data = '';
   
-// Modal functions
+// Functions for Modals
 
   constructor(private modalService: NgbModal) {}
 
@@ -29,8 +29,9 @@ export class AppComponent implements OnInit{
     modalRef.componentInstance.data = this.data;
   }
 
-  closeLoginModal() {
-    this.modalService.dismissAll();
+  openRegisterModal() {
+    const modalRef = this.modalService.open(RegisterUserComponent, {size: 'md', backdrop: 'static', modalDialogClass: 'modal-dialog-centered'});
+    modalRef.componentInstance.data = this.data;
   }
 
 // Google Maps JavaScript API Loader
