@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { LoginuserService } from '../loginuser.service';
 import { User } from '../user';
-import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-user-login',
@@ -12,8 +12,7 @@ export class UserLoginComponent implements OnInit {
 
   user:User = new User();
 
-  constructor(private loginuserservice: LoginuserService, 
-    ) {}
+  constructor(private loginuserservice: LoginuserService, private modalService: NgbModal) {}
 
   ngOnInit(): void {      
   }
@@ -22,6 +21,7 @@ export class UserLoginComponent implements OnInit {
     this.loginuserservice.loginUser(this.user).subscribe({
       next: (data) => {
       alert("Login successful!");
+      this.modalService.dismissAll();
     },
       error: (error) => {
         alert("Username and/or password not correct.");

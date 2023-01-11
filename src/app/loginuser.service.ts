@@ -7,8 +7,7 @@ import { User } from './user';
   providedIn: 'root'
 })
 export class LoginuserService {
-
-  private baseUrl="http://localhost:8081/user/login";
+  baseUrl="http://localhost:8081/user/login";
   constructor(private httpClient: HttpClient) { }
 
   loginUser(user: User):Observable<object>{;
