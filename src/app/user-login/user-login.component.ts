@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { LoginuserService } from '../loginuser.service';
 import { User } from '../user';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { RegisterUserComponent } from '../register-user/register-user.component';
 
 @Component({
   selector: 'app-user-login',
@@ -11,6 +12,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class UserLoginComponent implements OnInit {
 
   user:User = new User();
+  data = '';
 
   constructor(private loginuserservice: LoginuserService, private modalService: NgbModal) {}
 
@@ -20,7 +22,6 @@ export class UserLoginComponent implements OnInit {
   userLogin(){
     this.loginuserservice.loginUser(this.user).subscribe({
       next: (data) => {
-      alert("Login successful!");
       this.modalService.dismissAll();
     },
       error: (error) => {
@@ -28,4 +29,10 @@ export class UserLoginComponent implements OnInit {
       }
     })
   }
+
+  openRegisterModal() {
+    const modalRef = this.modalService.open(RegisterUserComponent, {size: 'md', backdrop: 'static', modalDialogClass: 'modal-dialog-centered'});
+    modalRef.componentInstance.data = this.data;
+  }
+
 }

@@ -5,7 +5,6 @@
         <div class="container">
             <input type="text" [(ngModel)]="user.userId" class="form-control" placeholder="Username" id="userId" name="userId">
             <input type="password" [(ngModel)]="user.password" class="form-control" placeholder="Password" id="password" name="password">
-            <input type="password" [(ngModel)]="user.cpassword" class="form-control" placeholder="Confirm Password" id="cpassword" name="cpassword">
         </div>
         <div class="modal-footer">
             <form (ngSubmit)="userRegister()">
@@ -13,6 +12,7 @@
             </form>
         </div>  
     </div>
+
 
 
 

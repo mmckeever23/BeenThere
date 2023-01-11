@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { RegisterService } from '../register.service';
 import { User } from '../user';
 
@@ -11,17 +12,19 @@ export class RegisterUserComponent implements OnInit{
 
   user: User = new User();
 
-  constructor(private registerService: RegisterService) {}
+  constructor(private registerService: RegisterService, private modalService: NgbModal) {}
 
   ngOnInit(): void {
       
   }
 
-  userRegister(){
-    console.log(this.user);
+  userRegister(){ 
     this.registerService.registerUser(this.user).subscribe({
       next: (data) => {
         alert("New account created!");
+        // this.modalService.dismissAll;
+
+        //need to dismiss just the "register-user" modal, not the "user-login" modal.
       },
         error: (error) => {
           alert("There was a problem creating a new account.");

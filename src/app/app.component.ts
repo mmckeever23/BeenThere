@@ -29,11 +29,6 @@ export class AppComponent implements OnInit{
     modalRef.componentInstance.data = this.data;
   }
 
-  openRegisterModal() {
-    const modalRef = this.modalService.open(RegisterUserComponent, {size: 'md', backdrop: 'static', modalDialogClass: 'modal-dialog-centered'});
-    modalRef.componentInstance.data = this.data;
-  }
-
 // Google Maps JavaScript API Loader
 
   ngOnInit():void {

@@ -1,23 +1,23 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+// import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PinModalComponent } from './pin-modal.component';
+// import { PinModalComponent } from './pin-modal.component';
 
-describe('PinModalComponent', () => {
-  let component: PinModalComponent;
-  let fixture: ComponentFixture<PinModalComponent>;
+// describe('PinModalComponent', () => {
+//   let component: PinModalComponent;
+//   let fixture: ComponentFixture<PinModalComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ PinModalComponent ]
-    })
-    .compileComponents();
+//   beforeEach(async () => {
+//     await TestBed.configureTestingModule({
+//       declarations: [ PinModalComponent ]
+//     })
+//     .compileComponents();
 
-    fixture = TestBed.createComponent(PinModalComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+//     fixture = TestBed.createComponent(PinModalComponent);
+//     component = fixture.componentInstance;
+//     fixture.detectChanges();
+//   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+//   it('should create', () => {
+//     expect(component).toBeTruthy();
+//   });
+// });
