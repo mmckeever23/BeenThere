@@ -21,9 +21,15 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<?> loginUser(@RequestBody User userData) {
+        System.out.println(userData);
         User user=repo.findByUserId(userData.getUserId());
-        if(user.getPassword().equals(userData.getPassword()))
+        if(user == null){
+            return ResponseEntity.internalServerError().build();
+        } else if(user.getPassword().equals(userData.getPassword())) {
             return ResponseEntity.ok(user);
-        return (ResponseEntity<?>) ResponseEntity.internalServerError();
+        } else {
+            return ResponseEntity.internalServerError().build();
+        }
     }
 }
+
