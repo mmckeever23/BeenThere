@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RegisterService } from '../register.service';
 import { User } from '../user';
 
 @Component({
@@ -10,7 +11,7 @@ export class RegisterUserComponent implements OnInit{
 
   user: User = new User();
 
-  constructor() {}
+  constructor(private registerService: RegisterService) {}
 
   ngOnInit(): void {
       
@@ -18,6 +19,17 @@ export class RegisterUserComponent implements OnInit{
 
   userRegister(){
     console.log(this.user);
+    this.registerService.registerUser(this.user).subscribe({
+      next: (data) => {
+        alert("New account created!");
+      },
+        error: (error) => {
+          alert("There was a problem creating a new account.");
+        }
+    })
   }
+
+
+
 
 }

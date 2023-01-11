@@ -52,7 +52,8 @@ export class AppComponent implements OnInit{
      
 // Render Login modal
 
-      this.openLoginModal();
+      // this.openLoginModal();
+      this.openRegisterModal();
 
 // Render map
 
