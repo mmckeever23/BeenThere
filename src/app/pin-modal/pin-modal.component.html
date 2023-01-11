@@ -1,1 +1,17 @@
-<p>pin-modal works!</p>
+<div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title">My Trip to {{data}}</h4>
+    </div>
+    <input type="text" class="form-control" placeholder="What was the occassion for this trip?">
+    <input type="date" class="form-control w-25">
+    <input type="date" class="form-control w-25">
+    <textarea class="form-control" placeholder='What did you do there?' rows='10' cols='15'></textarea>
+    <input type="file" class="form-control" >
+    <div class="modal-footer">
+        <button type="button" class="btn btn btn-primary" data-dismiss="modal">Edit Pin Details</button>
+        <button type="button" class="btn btn btn-success" data-dismiss="modal">Save Pin Details</button>
+        <button type="button" class="btn btn-warning" (click)="activeModal.dismiss('Cross click')">Discard Changes & Close</button>
+        <button type="button" class="btn btn-danger">Delete Pin</button>
+    </div>
+ </div>
+
