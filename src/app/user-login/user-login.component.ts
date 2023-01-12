@@ -3,6 +3,7 @@ import { LoginuserService } from '../loginuser.service';
 import { User } from '../user';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { RegisterUserComponent } from '../register-user/register-user.component';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-user-login',
@@ -19,7 +20,7 @@ export class UserLoginComponent implements OnInit {
   ngOnInit(): void {      
   }
 
-  userLogin(){
+  userLogin(login: NgForm){
     this.loginuserservice.loginUser(this.user).subscribe({
       next: (data) => {
       this.modalService.dismissAll();
@@ -28,6 +29,7 @@ export class UserLoginComponent implements OnInit {
         alert("Username and/or password not correct.");
       }
     })
+    login.reset();
   }
 
   openRegisterModal() {
