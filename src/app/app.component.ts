@@ -44,7 +44,7 @@ export class AppComponent implements OnInit{
 
     loader.load().then(() => {
      
-// Render Login modal
+// Load Login modal
 
       this.openLoginModal();
 
@@ -94,6 +94,7 @@ export class AppComponent implements OnInit{
           map.setCenter(marker.getPosition() as google.maps.LatLng);
           setTimeout(()=>{this.openPinModal()}, 1000);
           // console.log("" + marker.getPosition());
+          console.log("" + marker.getPosition());
                     
 // Click handler for pre-existing marker
 
