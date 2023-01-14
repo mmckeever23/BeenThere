@@ -3,7 +3,6 @@ import { Loader } from '@googlemaps/js-api-loader';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PinModalComponent } from './pin-modal/pin-modal.component';
 import { UserLoginComponent } from './user-login/user-login.component';
-import { RegisterUserComponent } from './register-user/register-user.component';
 
 @Component({
   selector: 'app-root',
@@ -15,12 +14,12 @@ export class AppComponent implements OnInit{
   title = 'frontend';
   data = '';
   
-// Functions for Modals
+// Modal functions
 
   constructor(private modalService: NgbModal) {}
 
-  openModal() {
-    const modalRef = this.modalService.open(PinModalComponent, {size: 'lg', backdrop: 'static', modalDialogClass: 'modal-dialog-centered'});
+  openPinModal() {
+    const modalRef = this.modalService.open(PinModalComponent, {size: 'lg', modalDialogClass: 'modal-dialog-centered'});
     modalRef.componentInstance.data = this.data;
   }
 
@@ -48,7 +47,6 @@ export class AppComponent implements OnInit{
 // Render Login modal
 
       this.openLoginModal();
-      // this.openRegisterModal();
 
 // Render map
 
@@ -94,16 +92,16 @@ export class AppComponent implements OnInit{
             })
           this.data=place.name;
           map.setCenter(marker.getPosition() as google.maps.LatLng);
-          setTimeout(()=>{this.openModal()}, 1000);
-          
+          setTimeout(()=>{this.openPinModal()}, 1000);
+          // console.log("" + marker.getPosition());
+                    
 // Click handler for pre-existing marker
 
           marker.addListener("click", () => {
             this.data=place.name;
             map.setCenter(marker.getPosition() as google.maps.LatLng);
-            this.openModal();
+            this.openPinModal();
             })
-          markers.push(marker);
         })
       })
     })
