@@ -24,9 +24,9 @@ export class RegisterUserComponent implements OnInit{
         alert("New account created!");
         this.modalService.dismiss();
       },
-        error: (error) => {
-          alert("There was a problem creating a new account.");
-        }
+      error: (error) => {
+        alert("There was a problem creating a new account.");
+      }
     })
   }
 }
