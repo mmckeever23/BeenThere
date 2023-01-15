@@ -9,13 +9,15 @@ import { PinModalComponent } from './pin-modal/pin-modal.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { FormsModule } from '@angular/forms';
+import { PinDataComponent } from './pin-data/pin-data.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PinModalComponent,
     UserLoginComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
+    PinDataComponent,
   ],
   imports: [
     BrowserModule,

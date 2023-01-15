@@ -3,6 +3,8 @@ import { Loader } from '@googlemaps/js-api-loader';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PinModalComponent } from './pin-modal/pin-modal.component';
 import { UserLoginComponent } from './user-login/user-login.component';
+import { PinDataComponent } from './pin-data/pin-data.component';
+import { Pin } from './pin';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +15,10 @@ import { UserLoginComponent } from './user-login/user-login.component';
 export class AppComponent implements OnInit{
   title = 'frontend';
   data = '';
+  pinData={
+    lat: 0,
+    lng: 0
+  }
   
 // Modal functions
 
@@ -46,7 +52,7 @@ export class AppComponent implements OnInit{
      
 // Render Login modal
 
-      this.openLoginModal();
+      // this.openLoginModal();
 
 // Render map
 
@@ -93,8 +99,9 @@ export class AppComponent implements OnInit{
           this.data=place.name;
           map.setCenter(marker.getPosition() as google.maps.LatLng);
           setTimeout(()=>{this.openPinModal()}, 1000);
-          // console.log("" + marker.getPosition());
-                    
+          this.pinData.lat = Number(marker.getPosition()?.lat());
+          this.pinData.lng = Number(marker.getPosition()?.lng());
+          
 // Click handler for pre-existing marker
 
           marker.addListener("click", () => {
