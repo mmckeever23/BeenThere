@@ -14,10 +14,10 @@ import { Pin } from './pin';
 export class AppComponent implements OnInit{
   title = 'frontend';
   data = '';
-  pinData={
+  pinData= {
     lat: 0,
     lng: 0
-  }
+  };
   
 // Modal functions
 
