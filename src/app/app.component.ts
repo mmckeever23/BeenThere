@@ -3,7 +3,6 @@ import { Loader } from '@googlemaps/js-api-loader';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PinModalComponent } from './pin-modal/pin-modal.component';
 import { UserLoginComponent } from './user-login/user-login.component';
-import { PinDataComponent } from './pin-data/pin-data.component';
 import { Pin } from './pin';
 
 @Component({
