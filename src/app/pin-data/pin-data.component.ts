@@ -21,6 +21,7 @@ export class PinDataComponent {
     this.pinDataService.savePinData(this.pinData).subscribe({
       next: (data) => {
         alert("Pin saved!");
+        
       },
       error: (error) => {
         alert("Something went wrong. Pin not saved.");

@@ -9,8 +9,10 @@
     <input type="file" class="form-control" >
     <div class="modal-footer">
         <button type="button" class="btn btn btn-primary" data-dismiss="modal">Edit Pin Details</button>
-        <button type="button" class="btn btn btn-success" data-dismiss="modal">Save Pin Details</button>
-        <button type="button" class="btn btn-warning" (click)="activeModal.dismiss('Cross click')">Discard Changes & Close</button>
+        <form (ngSubmit)="pinDataSave()">
+          <button type="submit" class="btn btn-success">Save Pin</button>
+      </form>
+        <button type="button" class="btn btn-warning" (click)="modalService.dismiss('Cross click')">Discard Changes & Close</button>
         <button type="button" class="btn btn-danger">Delete Pin</button>
     </div>
  </div>
