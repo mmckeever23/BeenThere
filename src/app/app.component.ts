@@ -12,16 +12,16 @@ import { Pin } from './pin';
 })
 
 export class AppComponent implements OnInit{
+
+// Declare variables
+
   title = 'frontend';
   data = '';
-  pinData= {
-    lat: 0,
-    lng: 0
-  };
+  pin: Pin = new Pin();
   
-// Modal functions
-
   constructor(private modalService: NgbModal) {}
+
+// Modal functions
 
   openPinModal() {
     const modalRef = this.modalService.open(PinModalComponent, {size: 'lg', modalDialogClass: 'modal-dialog-centered'});
@@ -98,8 +98,9 @@ export class AppComponent implements OnInit{
           this.data=place.name;
           map.setCenter(marker.getPosition() as google.maps.LatLng);
           setTimeout(()=>{this.openPinModal()}, 1000);
-          this.pinData.lat = Number(marker.getPosition()?.lat());
-          this.pinData.lng = Number(marker.getPosition()?.lng());
+          let lat = marker.getPosition()?.lat();
+          let lng = marker.getPosition()?.lat();
+          console.log(lat, lng);
           
 // Click handler for pre-existing marker
 

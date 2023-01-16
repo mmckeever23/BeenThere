@@ -1,3 +1,4 @@
 export class Pin {
-    pinData!: object;
+    lat!: number;
+    lng!: number;
 }
