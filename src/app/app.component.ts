@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Loader } from '@googlemaps/js-api-loader';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PinModalComponent } from './pin-modal/pin-modal.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { Pin } from './pin';
+import { PindataService } from './pindata.service';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,17 @@ export class AppComponent implements OnInit{
   data = '';
   pin: Pin = new Pin();
   
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal, private pinDataService: PindataService, activeModalService: NgbActiveModal) {}
+
+  coordinatesSave(){
+    console.log(this.pin);
+    this.pinDataService.saveCoordinates(this.pin).subscribe({
+      next: (data) => {},
+      error: (error) => {
+        alert("There was a problem creating the pin.");
+      }
+    })
+  }
 
 // Modal functions
 
@@ -98,10 +109,10 @@ export class AppComponent implements OnInit{
           this.data=place.name;
           map.setCenter(marker.getPosition() as google.maps.LatLng);
           setTimeout(()=>{this.openPinModal()}, 1000);
-          let lat = marker.getPosition()?.lat();
-          let lng = marker.getPosition()?.lat();
-          console.log(lat, lng);
-          
+          this.pin.lat = marker.getPosition()!.lat();
+          this.pin.lng = marker.getPosition()!.lng();
+          this.coordinatesSave();
+                    
 // Click handler for pre-existing marker
 
           marker.addListener("click", () => {

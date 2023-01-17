@@ -8,10 +8,11 @@ import { Pin } from './pin';
 })
 export class PindataService {
 
-  baseUrl="http://localhost:8081/pin"
+  baseUrl="http://localhost:8081/pindata"
   constructor(private httpClient: HttpClient) { }
 
-  savePinData(pinData: object): Observable<Object>{
-    return this.httpClient.post(`${this.baseUrl}`, pinData);
+  saveCoordinates(pin: Pin): Observable<Object>{
+    console.log(pin);
+    return this.httpClient.post(`${this.baseUrl}`, pin);
   }
 }
