@@ -10,13 +10,15 @@ import org.hibernate.annotations.DynamicUpdate;
 @Entity
 @DynamicUpdate
 @DynamicInsert
-@Table(name="pin_data")
+@Table(name="pin")
 @AllArgsConstructor
 @Data
 @NoArgsConstructor
 public class Pin {
 
     @Id
-    @Column(name="latitude")
-    private Object pinData;
+    private String lat;
+
+    private String lng;
+
 }
