@@ -18,7 +18,7 @@ public class PinController {
     @PostMapping("/pin")
     public ResponseEntity<Pin> savePins(@RequestBody Pin pin) {
         return ResponseEntity.ok(pinRepo.save(pin));
-     }
+    }
 
     @GetMapping("/pin")
     public List<Pin> getAllPins(){
