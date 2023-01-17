@@ -17,8 +17,10 @@ import org.hibernate.annotations.DynamicUpdate;
 public class Pin {
 
     @Id
+    private String name;
     private String lat;
-
     private String lng;
+
+
 
 }
