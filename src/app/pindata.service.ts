@@ -6,13 +6,11 @@ import { Pin } from './pin';
 @Injectable({
   providedIn: 'root'
 })
-export class PindataService {
-
-  baseUrl="http://localhost:8081/pindata"
+export class PindataService { 
+  baseUrl="http://localhost:8081/pin"
   constructor(private httpClient: HttpClient) { }
 
   saveCoordinates(pin: Pin): Observable<Object>{
-    console.log(pin);
     return this.httpClient.post(`${this.baseUrl}`, pin);
   }
 }

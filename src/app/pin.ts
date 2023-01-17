@@ -1,4 +1,4 @@
 export class Pin {
-    lat!: number;
-    lng!: number;
+    lat!: string;
+    lng!: string;
 }

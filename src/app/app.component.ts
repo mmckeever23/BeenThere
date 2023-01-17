@@ -20,10 +20,9 @@ export class AppComponent implements OnInit{
   data = '';
   pin: Pin = new Pin();
   
-  constructor(private modalService: NgbModal, private pinDataService: PindataService, activeModalService: NgbActiveModal) {}
+  constructor(private modalService: NgbModal, private pinDataService: PindataService) {}
 
   coordinatesSave(){
-    console.log(this.pin);
     this.pinDataService.saveCoordinates(this.pin).subscribe({
       next: (data) => {},
       error: (error) => {
@@ -54,7 +53,6 @@ export class AppComponent implements OnInit{
 
 // Declaration of Google Map objects
     let map: google.maps.Map;
-    let markers: google.maps.Marker[] = [];
 
 // Load function
 
@@ -109,8 +107,8 @@ export class AppComponent implements OnInit{
           this.data=place.name;
           map.setCenter(marker.getPosition() as google.maps.LatLng);
           setTimeout(()=>{this.openPinModal()}, 1000);
-          this.pin.lat = marker.getPosition()!.lat();
-          this.pin.lng = marker.getPosition()!.lng();
+          this.pin.lat = String(marker.getPosition()!.lat());
+          this.pin.lng = String(marker.getPosition()!.lng());
           this.coordinatesSave();
                     
 // Click handler for pre-existing marker
