@@ -23,7 +23,7 @@ export class AppComponent implements OnInit{
   
   constructor(private modalService: NgbModal, private pinDataService: PindataService) {}
 
-//Function for saving pins
+//Functions for saving pins
 
   pinSave(){
     this.pinDataService.savePins(this.pin).subscribe({
@@ -54,10 +54,17 @@ export class AppComponent implements OnInit{
       libraries: ["places"],
     })
 
-// Declaration of Google Map objects
+// Declaration of map object
+
     let map: google.maps.Map;
 
-// Load function
+// Send pin data to backend
+
+    this.pinDataService.getAllPins().subscribe(data=>{
+      this.pins=data;
+    })
+
+// Loader function
 
     loader.load().then(() => {
      
@@ -66,6 +73,7 @@ export class AppComponent implements OnInit{
       this.openLoginModal();
 
 // Render map
+
       map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
         center: { lat: 35, lng: 5 },
         zoom: 3,
@@ -83,19 +91,26 @@ export class AppComponent implements OnInit{
         }
       });
 
-//Render saved pins
-
-      for (let i = 0; i<this.pins.length; i++) {
-        new google.maps.Marker({
-          position: { lat: Number(this.pins[i].lat), lng: Number(this.pins[i].lng) },
-          map,
-        })
-      }
-
 // Create the search box and link it to the UI element
 
       const input = document.getElementById("pac-input") as HTMLInputElement;
       const searchBox = new google.maps.places.SearchBox(input);
+
+//Render saved pins
+
+      for (let i = 0; i<this.pins.length; i++) {
+        let marker = new google.maps.Marker({
+          position: { lat: Number(this.pins[i].lat), lng: Number(this.pins[i].lng) },
+          map,
+          icon: "https://img.icons8.com/tiny-color/32/null/map-pin.png",
+          animation: google.maps.Animation.DROP,
+        })
+        marker.addListener("click", () => {
+          this.data=this.pins[i].name;
+          map.setCenter(marker.getPosition() as google.maps.LatLng);
+          this.openPinModal();
+          })  
+      }
 
 // Listen for the event fired when the user selects a prediction and retrieve more details for that place
 
@@ -106,7 +121,7 @@ export class AppComponent implements OnInit{
 
         places.forEach((place: any) => {
 
-// Create a marker
+// Create a new pin and add click handler
           
           const marker = new google.maps.Marker({
             map,
@@ -122,24 +137,13 @@ export class AppComponent implements OnInit{
           this.pin.lat = String(marker.getPosition()!.lat());
           this.pin.lng = String(marker.getPosition()!.lng());
           this.pinSave();
-                                     
-// Click handler for pre-existing marker
-
           marker.addListener("click", () => {
             this.data=place.name;
             map.setCenter(marker.getPosition() as google.maps.LatLng);
             this.openPinModal();
-            })  
+          })  
         })
       })
-
-    })
-
-//
-
-    this.pinDataService.getAllPins().subscribe(data=>{
-      this.pins=data;
-
     })
   }
 }   
