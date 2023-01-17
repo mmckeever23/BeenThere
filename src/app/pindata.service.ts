@@ -10,7 +10,12 @@ export class PindataService {
   baseUrl="http://localhost:8081/pin"
   constructor(private httpClient: HttpClient) { }
 
-  saveCoordinates(pin: Pin): Observable<Object>{
+  savePins(pin: Pin): Observable<Object>{
     return this.httpClient.post(`${this.baseUrl}`, pin);
   }
+
+  getAllPins(): Observable<Pin[]>{
+    return this.httpClient.get<Pin[]>(`${this.baseUrl}`);
+  }
+
 }
