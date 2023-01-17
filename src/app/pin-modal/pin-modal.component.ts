@@ -14,18 +14,6 @@ export class PinModalComponent {
 
   constructor(private pinDataService: PindataService, public modalService: NgbActiveModal){}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  // pinDataSave(){
-  //   this.pinDataService.savePinData(user).subscribe({
-  //     next: (data) => {
-  //       alert("Information saved!");
-  //       this.modalService.dismiss();
-  //     },
-  //     error: (error) => {
-  //       alert("Something went wrong. Information not saved.");
-  //     }
-  //   })
-  // }
 }
