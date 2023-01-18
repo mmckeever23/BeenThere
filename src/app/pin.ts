@@ -3,7 +3,7 @@ export class Pin {
     lat!: string;
     lng!: string;
     title!: string;
-    depart!: string;
-    return!: string;
+    departDate!: string;
+    returnDate!: string;
     log!: string;
 }
