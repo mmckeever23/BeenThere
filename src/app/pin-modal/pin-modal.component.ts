@@ -11,9 +11,23 @@ import { Pin } from '../pin';
 export class PinModalComponent {
 
   @Input() data: any;
+  @Input() pin: any;
 
   constructor(private pinDataService: PindataService, public modalService: NgbActiveModal){}
 
   ngOnInit(): void {}
+
+  pinSave(){
+    console.log(this.pin);
+    this.pinDataService.savePins(this.pin).subscribe({
+      next: (data) => {
+        alert("Pin created!");
+      },
+      error: (error) => {
+        alert("There was a problem creating the pin.");
+      }
+    })
+  }
+
 
 }

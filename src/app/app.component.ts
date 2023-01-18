@@ -25,20 +25,22 @@ export class AppComponent implements OnInit{
 
 //Functions for saving pins
 
-  pinSave(){
-    this.pinDataService.savePins(this.pin).subscribe({
-      next: (data) => {},
-      error: (error) => {
-        alert("There was a problem creating the pin.");
-      }
-    })
-  }
+  // pinSave(){
+  //   console.log(this.pin);
+  //   this.pinDataService.savePins(this.pin).subscribe({
+  //     next: (data) => {},
+  //     error: (error) => {
+  //       alert("There was a problem creating the pin.");
+  //     }
+  //   })
+  // }
 
 // Modal functions
 
   openPinModal() {
     const modalRef = this.modalService.open(PinModalComponent, {size: 'lg', modalDialogClass: 'modal-dialog-centered'});
     modalRef.componentInstance.data = this.data;
+    modalRef.componentInstance.pin = this.pin;
   }
 
   openLoginModal() {
@@ -70,7 +72,7 @@ export class AppComponent implements OnInit{
      
 // Render Login modal
 
-      this.openLoginModal();
+      // this.openLoginModal();
 
 // Render map
 
@@ -136,12 +138,14 @@ export class AppComponent implements OnInit{
           setTimeout(()=>{this.openPinModal()}, 1000);
           this.pin.lat = String(marker.getPosition()!.lat());
           this.pin.lng = String(marker.getPosition()!.lng());
-          this.pinSave();
+          // this.pinSave();
+
           marker.addListener("click", () => {
             this.data=place.name;
             map.setCenter(marker.getPosition() as google.maps.LatLng);
             this.openPinModal();
-          })  
+          }) 
+           
         })
       })
     })

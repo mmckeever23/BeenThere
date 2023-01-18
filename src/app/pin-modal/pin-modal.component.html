@@ -1,13 +1,25 @@
 <div class="modal-content">
-    <div class="modal-header">
-        <h4 class="modal-title">My Trip to {{data}}</h4>
+    <div class="modal-header text-center d-block">
+        <h4 class="modal-title d-inline-block">My Trip to {{data}}</h4>
     </div>
-    <input type="text" class="form-control" placeholder="What was the occassion for this trip?">
-    <input type="date" class="form-control w-25">
-    <input type="date" class="form-control w-25">
-    <textarea class="form-control" placeholder='What did you do there?' rows='10' cols='15'></textarea>
-    <input type="file" class="form-control" >
+    <div class="form-group">
+        <label>Trip Title</label>
+        <input type="text" class="form-control" placeholder="What was the occassion for this trip?" id="title" name="title" [(ngModel)]="pin.title">
+        <form class="form-inline">
+            <label>Departure Date</label>
+            <input type="date" class="form-control w-25" id="depart" name="depart" [(ngModel)]="pin.depart">
+            <label>Return Date Date</label>
+            <input type="date" class="form-control w-25" id="return" name="return" [(ngModel)]="pin.return">
+        </form>
+        <label>Trip Log</label>
+        <textarea class="form-control" placeholder='What did you do there?' rows='10' cols='15' id="log" name="log" [(ngModel)]="pin.log"></textarea>
+        <label>Photos</label>
+        <input type="file" class="form-control">
+    </div>
     <div class="modal-footer">
+        <form (ngSubmit)="pinSave()">
+            <button type="submit" class="btn btn-success">Save</button>
+        </form>
         <button type="button" class="btn btn-warning" (click)="modalService.dismiss('Cross click')">Close</button>
     </div>
  </div>
