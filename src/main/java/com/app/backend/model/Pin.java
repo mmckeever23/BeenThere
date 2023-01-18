@@ -20,6 +20,11 @@ public class Pin {
     private String name;
     private String lat;
     private String lng;
+    private String title;
+    private String departDate;
+    private String returnDate;
+    private String log;
+
 
 
 
