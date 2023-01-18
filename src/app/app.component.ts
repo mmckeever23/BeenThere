@@ -1,10 +1,11 @@
-import { Component, OnInit, platformCore } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Loader } from '@googlemaps/js-api-loader';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PinModalComponent } from './pin-modal/pin-modal.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { Pin } from './pin';
 import { PindataService } from './pindata.service';
+import { ViewModalComponent } from './view-modal/view-modal.component';
 
 @Component({
   selector: 'app-root',
@@ -23,18 +24,6 @@ export class AppComponent implements OnInit{
   
   constructor(private modalService: NgbModal, private pinDataService: PindataService) {}
 
-//Functions for saving pins
-
-  // pinSave(){
-  //   console.log(this.pin);
-  //   this.pinDataService.savePins(this.pin).subscribe({
-  //     next: (data) => {},
-  //     error: (error) => {
-  //       alert("There was a problem creating the pin.");
-  //     }
-  //   })
-  // }
-
 // Modal functions
 
   openPinModal() {
@@ -46,6 +35,13 @@ export class AppComponent implements OnInit{
   openLoginModal() {
     const modalRef = this.modalService.open(UserLoginComponent, {size: 'md', backdrop: 'static', modalDialogClass: 'modal-dialog-centered'});
     modalRef.componentInstance.data = this.data;
+  }
+
+  openViewModal(){
+    const modalRef = this.modalService.open(ViewModalComponent, {size: 'lg', modalDialogClass: 'modal-dialog-centered'});
+    modalRef.componentInstance.data = this.data;
+    modalRef.componentInstance.pin = this.pin;
+    modalRef.componentInstance.pins = this.pins;
   }
 
 // Google Maps JavaScript API Loader
@@ -110,7 +106,7 @@ export class AppComponent implements OnInit{
         marker.addListener("click", () => {
           this.data=this.pins[i].name;
           map.setCenter(marker.getPosition() as google.maps.LatLng);
-          this.openPinModal();
+          this.openViewModal();
           })  
       }
 
@@ -138,14 +134,12 @@ export class AppComponent implements OnInit{
           setTimeout(()=>{this.openPinModal()}, 1000);
           this.pin.lat = String(marker.getPosition()!.lat());
           this.pin.lng = String(marker.getPosition()!.lng());
-          // this.pinSave();
 
           marker.addListener("click", () => {
             this.data=place.name;
             map.setCenter(marker.getPosition() as google.maps.LatLng);
-            this.openPinModal();
-          }) 
-           
+            this.openViewModal();
+          })       
         })
       })
     })
