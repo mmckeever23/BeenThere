@@ -9,6 +9,7 @@ import { PinModalComponent } from './pin-modal/pin-modal.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { FormsModule } from '@angular/forms';
+import { ViewModalComponent } from './view-modal/view-modal.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { FormsModule } from '@angular/forms';
     PinModalComponent,
     UserLoginComponent,
     RegisterUserComponent,
+    ViewModalComponent,
   ],
   imports: [
     BrowserModule,
