@@ -18,7 +18,6 @@ export class AppComponent implements OnInit{
 // Declare variables
 
   title = 'frontend';
-  data = '';
   pin: Pin = new Pin();
   pins: Pin[]=[];
   
@@ -28,18 +27,15 @@ export class AppComponent implements OnInit{
 
   openPinModal() {
     const modalRef = this.modalService.open(PinModalComponent, {size: 'lg', modalDialogClass: 'modal-dialog-centered'});
-    modalRef.componentInstance.data = this.data;
     modalRef.componentInstance.pin = this.pin;
   }
 
   openLoginModal() {
     const modalRef = this.modalService.open(UserLoginComponent, {size: 'md', backdrop: 'static', modalDialogClass: 'modal-dialog-centered'});
-    modalRef.componentInstance.data = this.data;
   }
 
   openViewModal(){
     const modalRef = this.modalService.open(ViewModalComponent, {size: 'lg', modalDialogClass: 'modal-dialog-centered'});
-    modalRef.componentInstance.data = this.data;
     modalRef.componentInstance.pin = this.pin;
     modalRef.componentInstance.pins = this.pins;
   }
@@ -104,7 +100,7 @@ export class AppComponent implements OnInit{
           animation: google.maps.Animation.DROP,
         })
         marker.addListener("click", () => {
-          this.data=this.pins[i].name;
+          this.pin.name=this.pins[i].name;
           map.setCenter(marker.getPosition() as google.maps.LatLng);
           this.openViewModal();
           })  
@@ -128,7 +124,6 @@ export class AppComponent implements OnInit{
             position: place.geometry.location,
             animation: google.maps.Animation.DROP,
             })
-          this.data=place.name;
           this.pin.name=place.name;
           map.setCenter(marker.getPosition() as google.maps.LatLng);
           setTimeout(()=>{this.openPinModal()}, 1000);
@@ -136,7 +131,7 @@ export class AppComponent implements OnInit{
           this.pin.lng = String(marker.getPosition()!.lng());
 
           marker.addListener("click", () => {
-            this.data=place.name;
+            this.pin.name=place.name;
             map.setCenter(marker.getPosition() as google.maps.LatLng);
             this.openViewModal();
           })       

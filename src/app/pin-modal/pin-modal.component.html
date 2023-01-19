@@ -1,6 +1,6 @@
 <div class="modal-content">
     <div class="modal-header text-center d-block">
-        <h4 class="modal-title d-inline-block">Edit Pin for "My Trip to {{data}}"</h4>
+        <h4 class="modal-title d-inline-block">Edit Pin for "My Trip to {{pin.name}}"</h4>
     </div>
     <div class="form-group">
         <label>Trip Title</label>
@@ -12,7 +12,7 @@
             <input type="date" class="form-control w-25" id="return" name="return" [(ngModel)]="pin.returnDate">
         </form>
         <label>Trip Log</label>
-        <textarea class="form-control" placeholder='What did you do there?' rows='10' cols='15' id="log" name="log" [(ngModel)]="pin.log"></textarea>
+        <textarea class="form-control" placeholder='What did you do there?' rows='5' cols='15' id="log" name="log" [(ngModel)]="pin.log"></textarea>
         <label>Photos</label>
         <input type="file" class="form-control">
     </div>
