@@ -17,16 +17,7 @@ export class ViewModalComponent {
   
     constructor(public modalService: NgbModal, public activeModalService: NgbActiveModal){}
 
-  ngOnInit(): void {
-
-    // for (let i = 0; i<this.pins.length; i++) {
-    //   document.getElementById("title").innerHTML = this.pins[i].title;
-    //   document.getElementById("departDate").innerHTML = this.pins[i].departDate;
-    //   document.getElementById("returnDate").innerHTML = this.pins[i].returnDate;
-    //   document.getElementById("log").innerHTML = this.pins[i].log;
-    // }
-
-  }
+  ngOnInit(): void {}
 
   openPinModal() {
     const modalRef = this.modalService.open(PinModalComponent, {size: 'lg', modalDialogClass: 'modal-dialog-centered'});

@@ -20,7 +20,7 @@ export class AppComponent implements OnInit{
   title = 'frontend';
   pin: Pin = new Pin();
   pins: Pin[]=[];
-  
+    
   constructor(private modalService: NgbModal, private pinDataService: PindataService) {}
 
 // Modal functions
@@ -93,6 +93,7 @@ export class AppComponent implements OnInit{
 //Render saved pins
 
       for (let i = 0; i<this.pins.length; i++) {
+
         let marker = new google.maps.Marker({
           position: { lat: Number(this.pins[i].lat), lng: Number(this.pins[i].lng) },
           map,
@@ -101,7 +102,10 @@ export class AppComponent implements OnInit{
         })
         marker.addListener("click", () => {
           this.pin.name=this.pins[i].name;
-          map.setCenter(marker.getPosition() as google.maps.LatLng);
+          this.pin.departDate=this.pins[i].departDate;
+          this.pin.returnDate=this.pins[i].returnDate;
+          this.pin.log=this.pins[i].log;
+          this.pin.title=this.pins[i].title;
           this.openViewModal();
           })  
       }
@@ -132,7 +136,6 @@ export class AppComponent implements OnInit{
 
           marker.addListener("click", () => {
             this.pin.name=place.name;
-            map.setCenter(marker.getPosition() as google.maps.LatLng);
             this.openViewModal();
           })       
         })
