@@ -24,6 +24,5 @@ export class ViewModalComponent {
     modalRef.componentInstance.data = this.data;
     modalRef.componentInstance.pin = this.pin;
   }
-
 }
 
