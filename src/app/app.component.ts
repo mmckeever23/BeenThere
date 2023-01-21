@@ -106,6 +106,8 @@ export class AppComponent implements OnInit{
           this.pin.returnDate=this.pins[i].returnDate;
           this.pin.log=this.pins[i].log;
           this.pin.title=this.pins[i].title;
+          this.pin.lat=this.pins[i].lat;
+          this.pin.lng=this.pins[i].lng;
           this.openViewModal();
           })  
       }
