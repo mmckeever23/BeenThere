@@ -1,7 +1,5 @@
-import { DOCUMENT } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import * as moment from 'moment';
 import { PinModalComponent } from '../pin-modal/pin-modal.component';
 
 @Component({
