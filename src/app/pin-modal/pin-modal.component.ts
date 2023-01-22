@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Component, Input } from '@angular/core';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { PindataService } from '../pindata.service';
 
 @Component({
   selector: 'app-pin-modal',
@@ -9,9 +10,22 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class PinModalComponent {
 
   @Input() data: any;
+  @Input() pin: any;
 
-  constructor(public activeModal: NgbActiveModal) {}
+  constructor(private pinDataService: PindataService, public modalService: NgbActiveModal){}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
+  pinSave(){
+    this.pinDataService.savePins(this.pin).subscribe({
+      next: (data) => {
+        alert("Pin saved!");
+        this.modalService.dismiss();
+      },
+      error: (error) => {
+        alert("There was a problem saving this pin.");
+      }
+    })
+  }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { RegisterService } from '../register.service';
 import { User } from '../user';
 
@@ -24,9 +24,9 @@ export class RegisterUserComponent implements OnInit{
         alert("New account created!");
         this.modalService.dismiss();
       },
-        error: (error) => {
-          alert("There was a problem creating a new account.");
-        }
+      error: (error) => {
+        alert("There was a problem creating a new account.");
+      }
     })
   }
 }

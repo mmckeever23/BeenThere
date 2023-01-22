@@ -3,6 +3,9 @@ import { Loader } from '@googlemaps/js-api-loader';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PinModalComponent } from './pin-modal/pin-modal.component';
 import { UserLoginComponent } from './user-login/user-login.component';
+import { Pin } from './pin';
+import { PindataService } from './pindata.service';
+import { ViewModalComponent } from './view-modal/view-modal.component';
 
 @Component({
   selector: 'app-root',
@@ -11,21 +14,30 @@ import { UserLoginComponent } from './user-login/user-login.component';
 })
 
 export class AppComponent implements OnInit{
-  title = 'frontend';
-  data = '';
-  
-// Modal functions
 
-  constructor(private modalService: NgbModal) {}
+// Declare variables
+
+  title = 'frontend';
+  pin: Pin = new Pin();
+  pins: Pin[]=[];
+    
+  constructor(private modalService: NgbModal, private pinDataService: PindataService) {}
+
+// Modal functions
 
   openPinModal() {
     const modalRef = this.modalService.open(PinModalComponent, {size: 'lg', modalDialogClass: 'modal-dialog-centered'});
-    modalRef.componentInstance.data = this.data;
+    modalRef.componentInstance.pin = this.pin;
   }
 
   openLoginModal() {
     const modalRef = this.modalService.open(UserLoginComponent, {size: 'md', backdrop: 'static', modalDialogClass: 'modal-dialog-centered'});
-    modalRef.componentInstance.data = this.data;
+  }
+
+  openViewModal(){
+    const modalRef = this.modalService.open(ViewModalComponent, {size: 'lg', modalDialogClass: 'modal-dialog-centered'});
+    modalRef.componentInstance.pin = this.pin;
+    modalRef.componentInstance.pins = this.pins;
   }
 
 // Google Maps JavaScript API Loader
@@ -36,11 +48,17 @@ export class AppComponent implements OnInit{
       libraries: ["places"],
     })
 
-// Declaration of Google Map objects
-    let map: google.maps.Map;
-    let markers: google.maps.Marker[] = [];
+// Declaration of map object
 
-// Load function
+    let map: google.maps.Map;
+
+// Send pin data to backend
+
+    this.pinDataService.getAllPins().subscribe(data=>{
+      this.pins=data;
+    })
+
+// Loader function
 
     loader.load().then(() => {
      
@@ -72,6 +90,28 @@ export class AppComponent implements OnInit{
       const input = document.getElementById("pac-input") as HTMLInputElement;
       const searchBox = new google.maps.places.SearchBox(input);
 
+//Render saved pins
+
+      for (let i = 0; i<this.pins.length; i++) {
+
+        let marker = new google.maps.Marker({
+          position: { lat: Number(this.pins[i].lat), lng: Number(this.pins[i].lng) },
+          map,
+          icon: "https://img.icons8.com/tiny-color/32/null/map-pin.png",
+          animation: google.maps.Animation.DROP,
+        })
+        marker.addListener("click", () => {
+          this.pin.name=this.pins[i].name;
+          this.pin.departDate=this.pins[i].departDate;
+          this.pin.returnDate=this.pins[i].returnDate;
+          this.pin.log=this.pins[i].log;
+          this.pin.title=this.pins[i].title;
+          this.pin.lat=this.pins[i].lat;
+          this.pin.lng=this.pins[i].lng;
+          this.openViewModal();
+          })  
+      }
+
 // Listen for the event fired when the user selects a prediction and retrieve more details for that place
 
       searchBox.addListener("places_changed", () => {
@@ -81,8 +121,8 @@ export class AppComponent implements OnInit{
 
         places.forEach((place: any) => {
 
-// Create a marker
-
+// Create a new pin and add click handler
+          
           const marker = new google.maps.Marker({
             map,
             icon: "https://img.icons8.com/tiny-color/32/null/map-pin.png",
@@ -90,19 +130,18 @@ export class AppComponent implements OnInit{
             position: place.geometry.location,
             animation: google.maps.Animation.DROP,
             })
-          this.data=place.name;
+          this.pin.name=place.name;
           map.setCenter(marker.getPosition() as google.maps.LatLng);
           setTimeout(()=>{this.openPinModal()}, 1000);
-          // console.log("" + marker.getPosition());
-          console.log("" + marker.getPosition());
+          this.pin.lat = String(marker.getPosition()!.lat());
+          this.pin.lng = String(marker.getPosition()!.lng());
                     
 // Click handler for pre-existing marker
 
           marker.addListener("click", () => {
-            this.data=place.name;
-            map.setCenter(marker.getPosition() as google.maps.LatLng);
-            this.openPinModal();
-            })
+            this.pin.name=place.name;
+            this.openViewModal();
+          })       
         })
       })
     })
