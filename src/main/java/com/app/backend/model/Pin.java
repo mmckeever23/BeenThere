@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
+import java.io.Serializable;
+
 @Entity
 @DynamicUpdate
 @DynamicInsert
@@ -14,9 +16,14 @@ import org.hibernate.annotations.DynamicUpdate;
 @AllArgsConstructor
 @Data
 @NoArgsConstructor
-public class Pin {
+public class Pin implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name="id")
+    private Integer id;
     private String name;
     private String lat;
     private String lng;
