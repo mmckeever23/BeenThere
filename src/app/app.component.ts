@@ -62,7 +62,7 @@ export class AppComponent implements OnInit{
 
     loader.load().then(() => {
      
-// Render Login modal
+// Load Login modal
 
       this.openLoginModal();
 
@@ -135,6 +135,8 @@ export class AppComponent implements OnInit{
           setTimeout(()=>{this.openPinModal()}, 1000);
           this.pin.lat = String(marker.getPosition()!.lat());
           this.pin.lng = String(marker.getPosition()!.lng());
+                    
+// Click handler for pre-existing marker
 
           marker.addListener("click", () => {
             this.pin.name=place.name;
