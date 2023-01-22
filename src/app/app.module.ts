@@ -10,6 +10,7 @@ import { UserLoginComponent } from './user-login/user-login.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { FormsModule } from '@angular/forms';
 import { ViewModalComponent } from './view-modal/view-modal.component';
+import { UpdatePinComponent } from './update-pin/update-pin.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ViewModalComponent } from './view-modal/view-modal.component';
     UserLoginComponent,
     RegisterUserComponent,
     ViewModalComponent,
+    UpdatePinComponent,
   ],
   imports: [
     BrowserModule,

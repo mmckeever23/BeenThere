@@ -1,6 +1,6 @@
 <div class="modal-content">
     <div class="modal-header text-center d-block">
-        <h4 class="modal-title d-inline-block">Create New Pin: "My Trip to {{pin.name}}"</h4>
+        <h4 class="modal-title d-inline-block">Edit Pin for "My Trip to {{pin.name}}"</h4>
     </div>
     <div class="form-group">
         <label>Trip Title</label>
@@ -18,10 +18,9 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-danger" (click)="modalService.dismiss('Cross click')">Close</button>
-        <form (ngSubmit)="pinSave()">
-            <button type="submit" class="btn btn-success">Create Pin</button>
+        <form (ngSubmit)="pinUpdate()">
+            <button type="submit" class="btn btn-success">Save Edits</button>
         </form>
     </div>
  </div>
-
 

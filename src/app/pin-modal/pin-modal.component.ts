@@ -18,13 +18,14 @@ export class PinModalComponent {
   }
 
   pinSave(){
+    console.log(this.pin.title);
     this.pinDataService.savePins(this.pin).subscribe({
       next: (data) => {
-        alert("Pin saved!");
+        alert("Pin created!");
         this.modalService.dismiss();
       },
       error: (error) => {
-        alert("There was a problem saving this pin.");
+        alert("There was a problem creating this pin.");
       }
     })
   }

@@ -6,6 +6,7 @@ import { UserLoginComponent } from './user-login/user-login.component';
 import { Pin } from './pin';
 import { PindataService } from './pindata.service';
 import { ViewModalComponent } from './view-modal/view-modal.component';
+import { UpdatePinComponent } from './update-pin/update-pin.component';
 
 @Component({
   selector: 'app-root',
@@ -36,6 +37,12 @@ export class AppComponent implements OnInit{
 
   openViewModal(){
     const modalRef = this.modalService.open(ViewModalComponent, {size: 'lg', modalDialogClass: 'modal-dialog-centered'});
+    modalRef.componentInstance.pin = this.pin;
+    modalRef.componentInstance.pins = this.pins;
+  }
+
+  openUpdateModal(){
+    const modalRef = this.modalService.open(UpdatePinComponent, {size: 'lg', modalDialogClass: 'modal-dialog-centered'});
     modalRef.componentInstance.pin = this.pin;
     modalRef.componentInstance.pins = this.pins;
   }
