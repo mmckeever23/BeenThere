@@ -16,8 +16,20 @@ textarea {
   }
 
 label {
-    margin: 20px;
-    margin-bottom: 0px;
-    font-weight: bolder;
+    margin: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
+img {
+    height: 500px;
+    width: 100%;
+    padding-top: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+ }
+
+ img[src=""] {
+    display: none;
+ }
