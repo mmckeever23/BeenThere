@@ -7,6 +7,7 @@ import { Pin } from './pin';
 import { PindataService } from './pindata.service';
 import { ViewModalComponent } from './view-modal/view-modal.component';
 import { UpdatePinComponent } from './update-pin/update-pin.component';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -19,10 +20,22 @@ export class AppComponent implements OnInit{
 // Declare variables
 
   title = 'frontend';
+
   pin: Pin = new Pin();
   pins: Pin[]=[];
     
   constructor(private modalService: NgbModal, private pinDataService: PindataService) {}
+
+  getPins(): void {
+    this.pinDataService.getPins().subscribe({
+      next: (data) => {
+        this.pins = data;
+      },
+      error: (error) => {
+        alert(error.message);
+      }
+    })
+  }
 
 // Modal functions
 
@@ -59,11 +72,9 @@ export class AppComponent implements OnInit{
 
     let map: google.maps.Map;
 
-// Send pin data to backend
+// Load pin data
 
-    this.pinDataService.getAllPins().subscribe(data=>{
-      this.pins=data;
-    })
+    this.getPins();
 
 // Loader function
 
