@@ -17,10 +17,10 @@
         <input type="file" class="form-control">
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-danger" (click)="modalService.dismiss('Cross click')">Close</button>
         <form (ngSubmit)="pinUpdate()">
-            <button type="submit" class="btn btn-success">Save Edits</button>
+            <button type="submit" class="btn btn-success">Save</button>
         </form>
+        <button type="button" class="btn btn-warning" (click)="modalService.dismiss('Cross click')">Close</button>
     </div>
  </div>
 
