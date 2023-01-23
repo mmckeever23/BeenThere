@@ -18,8 +18,7 @@ export class PinModalComponent {
   }
 
   pinSave(){
-    console.log(this.pin.title);
-    this.pinDataService.savePins(this.pin).subscribe({
+    this.pinDataService.addPin(this.pin).subscribe({
       next: (data) => {
         alert("Pin created!");
         this.modalService.dismiss();

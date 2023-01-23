@@ -18,15 +18,6 @@ export class UpdatePinComponent {
   }
 
   pinUpdate(){
-    console.log(this.pin.title);
-  //   this.pinDataService.savePins(this.pin).subscribe({
-  //     next: (data) => {
-  //       alert("Pin edited!");
-  //       this.modalService.dismiss();
-  //     },
-  //     error: (error) => {
-  //       alert("There was a problem editing this pin.");
-  //     }
-  //   })
+    
   }
 }
