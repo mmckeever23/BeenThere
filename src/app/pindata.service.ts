@@ -7,23 +7,23 @@ import { Pin } from './pin';
   providedIn: 'root'
 })
 export class PindataService { 
-  baseUrl="http://localhost:8081/pin"
+  baseUrl="http://localhost:8081"
 
   constructor(private httpClient: HttpClient) { }
 
   getPins(): Observable<Pin[]>{
-    return this.httpClient.get<Pin[]>(`${this.baseUrl}/all`);
+    return this.httpClient.get<Pin[]>(`${this.baseUrl}/pin/all`);
   }
 
   addPin(pin: Pin): Observable<Pin>{
-    return this.httpClient.post<Pin>(`${this.baseUrl}/add`, pin);
+    return this.httpClient.post<Pin>(`${this.baseUrl}/pin/add`, pin);
   }
 
   updatePin(pin: Pin): Observable<Pin>{
-    return this.httpClient.put<Pin>(`${this.baseUrl}/update`, pin);
+    return this.httpClient.put<Pin>(`${this.baseUrl}/pin/update`, pin);
   }
 
   deletePin(pinId: number): Observable<void>{
-    return this.httpClient.delete<void>(`${this.baseUrl}/delete/${pinId}`);
+    return this.httpClient.delete<void>(`${this.baseUrl}/pin/delete/${pinId}`);
   }
 }

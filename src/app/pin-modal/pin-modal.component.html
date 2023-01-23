@@ -14,7 +14,11 @@
         <label>Trip Log</label>
         <textarea class="form-control" placeholder='What did you do there?' rows='5' cols='15' id="log" name="log" [(ngModel)]="pin.log"></textarea>
         <label>Photos</label>
-        <input type="file" class="form-control">
+        <input type="text" class="form-control" placeholder="Paste image URL here" id="imageUrl1" name="imageUrl1" [(ngModel)]="pin.imageUrl1">
+        <input type="text" class="form-control" placeholder="Paste image URL here" id="imageUrl2" name="imageUrl2" [(ngModel)]="pin.imageUrl2">
+        <input type="text" class="form-control" placeholder="Paste image URL here" id="imageUrl3" name="imageUrl3" [(ngModel)]="pin.imageUrl3">
+        <input type="text" class="form-control" placeholder="Paste image URL here" id="imageUrl4" name="imageUrl4" [(ngModel)]="pin.imageUrl4">
+        <input type="text" class="form-control" placeholder="Paste image URL here" id="imageUrl5" name="imageUrl5" [(ngModel)]="pin.imageUrl5">
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-danger" (click)="modalService.dismiss('Cross click')">Close</button>

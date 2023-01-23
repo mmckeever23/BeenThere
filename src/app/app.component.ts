@@ -126,6 +126,11 @@ export class AppComponent implements OnInit{
           this.pin.title=this.pins[i].title;
           this.pin.lat=this.pins[i].lat;
           this.pin.lng=this.pins[i].lng;
+          this.pin.imageUrl1=this.pins[i].imageUrl1;
+          this.pin.imageUrl2=this.pins[i].imageUrl2;
+          this.pin.imageUrl3=this.pins[i].imageUrl3;
+          this.pin.imageUrl4=this.pins[i].imageUrl4;
+          this.pin.imageUrl5=this.pins[i].imageUrl5;
           this.openViewModal();
           })  
       }
