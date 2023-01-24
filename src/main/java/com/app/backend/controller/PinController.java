@@ -41,6 +41,8 @@ public class PinController {
         return ResponseEntity.ok(pin);
     }
 
+// Update pin
+
     @PutMapping("/pin/{id}")
     public ResponseEntity<Pin> updatePin(@PathVariable long id, @RequestBody Pin pinDetails) {
         Pin pin = pinRepo.findById(id)
