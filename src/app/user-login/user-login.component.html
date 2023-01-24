@@ -4,15 +4,15 @@
             <h4>Welcome to <img src="https://img.icons8.com/tiny-color/32/null/map-pin.png" width="30" height="30" class="d-inline-block align-top" alt=""> BeenThere!</h4>
         </div>
         <div class="container">
-            <input type="text" [(ngModel)]="user.userId" class="form-control" placeholder="Username" id="userId" name="userId">
-            <input type="password" [(ngModel)]="user.password" class="form-control" placeholder="Password" id="password" name="password">
+            <input type="text" [(ngModel)]="user.userId" class="form-control" placeholder="Username" id="userId" name="userId" required>
+            <input type="password" [(ngModel)]="user.password" class="form-control" placeholder="Password" id="password" name="password" required>
         </div>
         <div class="modal-footer">
             <form (ngSubmit)="openRegisterModal()">
                 <button type="submit" class="btn btn-success">Create Account</button>
             </form>
             <form (ngSubmit)="userLogin(login)">
-                <button type="submit" class="btn btn-primary">Login</button>
+                <button [disabled]="login.invalid" type="submit" class="btn btn-primary">Login</button>
             </form>
         </div>  
     </div>

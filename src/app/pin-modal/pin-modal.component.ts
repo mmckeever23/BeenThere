@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { PindataService } from '../pindata.service';
 
@@ -17,15 +18,20 @@ export class PinModalComponent {
   ngOnInit(): void {
   }
 
-  pinSave(){
-    this.pinDataService.addPin(this.pin).subscribe({
-      next: (data) => {
-        alert("Pin created!");
-        this.modalService.dismiss();
-      },
-      error: (error) => {
-        alert("There was a problem creating this pin.");
-      }
-    })
-  }
+  onAddEmployee(addForm: NgForm): void {}
+
+
+
+
+//   pinSave(){
+//     this.pinDataService.addPin(this.pin).subscribe({
+//       next: (data) => {
+//         alert("Pin created!");
+//         this.modalService.dismiss();
+//       },
+//       error: (error) => {
+//         alert("There was a problem creating this pin.");
+//       }
+//     })
+//   }
 }

@@ -12,7 +12,7 @@ export class RegisterUserComponent implements OnInit{
 
   user: User = new User();
 
-  constructor(private registerService: RegisterService, private modalService: NgbActiveModal) {}
+  constructor(private registerService: RegisterService, public modalService: NgbActiveModal) {}
 
   ngOnInit(): void {
       

@@ -9,6 +9,4 @@ export class Pin {
     imageUrl1!: string;
     imageUrl2!: string;
     imageUrl3!: string;
-    imageUrl4!: string;
-    imageUrl5!: string;
 }

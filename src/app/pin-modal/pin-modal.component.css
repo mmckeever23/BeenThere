@@ -18,6 +18,7 @@ textarea {
 
 label {
     margin: 20px;
+    margin-top: 0px;
     margin-bottom: 0px;
     font-weight: bolder;
 }

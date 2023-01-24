@@ -18,12 +18,6 @@
               <div class="carousel-item">
                 <img src="{{pin.imageUrl3}}" alt=" ">
               </div>
-              <div class="carousel-item">
-                <img src="{{pin.imageUrl4}}" alt=" ">
-              </div>
-              <div class="carousel-item">
-                <img src="{{pin.imageUrl5}}" alt=" ">
-              </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -34,11 +28,8 @@
               <span class="visually-hidden">Next</span>
             </button>
           </div>
-
-
-
     <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="openUpdateModal()">Edit Pin</button>
+        <button type="button" class="btn btn-success" (click)="openUpdateModal()">Edit Pin</button>
         <button type="button" class="btn btn-danger">Delete Pin</button>
         <button type="button" class="btn btn-warning" (click)="activeModalService.dismiss('Cross click')">Close</button>
     </div>
