@@ -15,12 +15,12 @@ public class PinController {
     @Autowired
     private PinRepo pinRepo;
 
-    @PostMapping("/save")
+    @PostMapping("/pin")
     public ResponseEntity<Pin> savePins(@RequestBody Pin pin) {
         return ResponseEntity.ok(pinRepo.save(pin));
     }
 
-    @GetMapping("/all")
+    @GetMapping("/pin")
     public List<Pin> getAllPins(){
         return pinRepo.findAll();
     }
