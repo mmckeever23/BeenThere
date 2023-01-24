@@ -6,6 +6,7 @@ import { UserLoginComponent } from './user-login/user-login.component';
 import { Pin } from './pin';
 import { PindataService } from './pindata.service';
 import { ViewModalComponent } from './view-modal/view-modal.component';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -31,7 +32,7 @@ export class AppComponent implements OnInit{
   }
 
   openLoginModal() {
-    const modalRef = this.modalService.open(UserLoginComponent, {size: 'md', backdrop: 'static', modalDialogClass: 'modal-dialog-centered'});
+    this.modalService.open(UserLoginComponent, {size: 'md', backdrop: 'static', modalDialogClass: 'modal-dialog-centered'});
   }
 
   openViewModal(){

@@ -30,6 +30,6 @@ img {
     padding-bottom: 30px;
  }
 
- img[src=""] {
+img[src=""] {
     display: none;
- }
+}

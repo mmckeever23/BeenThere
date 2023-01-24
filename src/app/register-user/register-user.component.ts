@@ -14,9 +14,7 @@ export class RegisterUserComponent implements OnInit{
 
   constructor(private registerService: RegisterService, public modalService: NgbActiveModal) {}
 
-  ngOnInit(): void {
-      
-  }
+  ngOnInit(): void {}
 
   userRegister(){ 
     this.registerService.registerUser(this.user).subscribe({

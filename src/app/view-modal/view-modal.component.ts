@@ -18,12 +18,6 @@ export class ViewModalComponent {
 
   ngOnInit(): void {}
 
-  openPinModal() {
-    const modalRef = this.modalService.open(PinModalComponent, {size: 'lg', modalDialogClass: 'modal-dialog-centered'});
-    modalRef.componentInstance.data = this.data;
-    modalRef.componentInstance.pin = this.pin;
-  }
-
   openUpdateModal(){
     const modalRef = this.modalService.open(UpdatePinComponent, {size: 'lg', modalDialogClass: 'modal-dialog-centered'});
     modalRef.componentInstance.pin = this.pin;
