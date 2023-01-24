@@ -14,19 +14,17 @@ export class UpdatePinComponent {
 
   constructor(private pinDataService: PindataService, public modalService: NgbActiveModal){}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   pinUpdate(){
-    console.log(this.pin.title);
-  //   this.pinDataService.savePins(this.pin).subscribe({
-  //     next: (data) => {
-  //       alert("Pin edited!");
-  //       this.modalService.dismiss();
-  //     },
-  //     error: (error) => {
-  //       alert("There was a problem editing this pin.");
-  //     }
-  //   })
+    this.pinDataService.savePins(this.pin).subscribe({
+      next: (data) => {
+        alert("Pin edited!");
+        this.modalService.dismiss();
+      },
+      error: (error) => {
+        alert("There was a problem editing this pin.");
+      }
+    })
   }
 }
