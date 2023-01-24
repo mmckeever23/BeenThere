@@ -6,7 +6,6 @@ import { UserLoginComponent } from './user-login/user-login.component';
 import { Pin } from './pin';
 import { PindataService } from './pindata.service';
 import { ViewModalComponent } from './view-modal/view-modal.component';
-import { UpdatePinComponent } from './update-pin/update-pin.component';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +18,7 @@ export class AppComponent implements OnInit{
 // Declare variables
 
   title = 'frontend';
+
   pin: Pin = new Pin();
   pins: Pin[]=[];
     
@@ -41,12 +41,6 @@ export class AppComponent implements OnInit{
     modalRef.componentInstance.pins = this.pins;
   }
 
-  openUpdateModal(){
-    const modalRef = this.modalService.open(UpdatePinComponent, {size: 'lg', modalDialogClass: 'modal-dialog-centered'});
-    modalRef.componentInstance.pin = this.pin;
-    modalRef.componentInstance.pins = this.pins;
-  }
-
 // Google Maps JavaScript API Loader
 
   ngOnInit():void {
@@ -58,12 +52,6 @@ export class AppComponent implements OnInit{
 // Declaration of map object
 
     let map: google.maps.Map;
-
-// Send pin data to backend
-
-    this.pinDataService.getAllPins().subscribe(data=>{
-      this.pins=data;
-    })
 
 // Loader function
 
