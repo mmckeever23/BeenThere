@@ -7,6 +7,7 @@ import { Pin } from './pin';
 import { PindataService } from './pindata.service';
 import { ViewModalComponent } from './view-modal/view-modal.component';
 import { NgForm } from '@angular/forms';
+import { UpdatePinComponent } from './update-pin/update-pin.component';
 
 @Component({
   selector: 'app-root',
@@ -41,6 +42,13 @@ export class AppComponent implements OnInit{
     modalRef.componentInstance.pins = this.pins;
   }
 
+  openUpdateModal(){
+    const modalRef = this.modalService.open(UpdatePinComponent, {size: 'lg', modalDialogClass: 'modal-dialog-centered'});
+    modalRef.componentInstance.pin = this.pin;
+    modalRef.componentInstance.pins = this.pins;
+    modalRef.componentInstance.id = this.pin.id;
+  }
+
 // Google Maps JavaScript API Loader
 
   ngOnInit():void {
@@ -65,7 +73,7 @@ export class AppComponent implements OnInit{
      
 // Load Login modal
 
-      this.openLoginModal();
+      // this.openLoginModal();
 
 // Render map
 
@@ -102,6 +110,7 @@ export class AppComponent implements OnInit{
           animation: google.maps.Animation.DROP,
         })
         marker.addListener("click", () => {
+          this.pin.id=this.pins[i].id;
           this.pin.name=this.pins[i].name;
           this.pin.departDate=this.pins[i].departDate;
           this.pin.log=this.pins[i].log;

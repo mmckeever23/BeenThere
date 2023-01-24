@@ -13,6 +13,7 @@ export class ViewModalComponent {
   @Input() data: any;
   @Input() pin: any;
   @Input() pins: any;
+  @Input() id: any;
   
     constructor(public modalService: NgbModal, public activeModalService: NgbActiveModal){}
 
@@ -22,6 +23,7 @@ export class ViewModalComponent {
     const modalRef = this.modalService.open(UpdatePinComponent, {size: 'lg', modalDialogClass: 'modal-dialog-centered'});
     modalRef.componentInstance.pin = this.pin;
     modalRef.componentInstance.pins = this.pins;
+    modalRef.componentInstance.id = this.pin.id;
   }
 }
 
