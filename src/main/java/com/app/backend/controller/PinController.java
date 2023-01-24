@@ -1,5 +1,6 @@
 package com.app.backend.controller;
 
+
 import com.app.backend.model.Pin;
 import com.app.backend.repo.PinRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -15,14 +18,43 @@ public class PinController {
     @Autowired
     private PinRepo pinRepo;
 
+// Get all pins
+
+    @GetMapping("/pin")
+    public List<Pin> getAllPins(){
+        return pinRepo.findAll();
+    }
+
+// Create new pin
+
     @PostMapping("/pin")
     public ResponseEntity<Pin> savePins(@RequestBody Pin pin) {
         return ResponseEntity.ok(pinRepo.save(pin));
     }
 
-    @GetMapping("/pin")
-    public List<Pin> getAllPins(){
-        return pinRepo.findAll();
+// Get pin by id
+
+    @GetMapping("/pin/{id}")
+    public ResponseEntity<Pin> getPinById(@PathVariable long id) {
+        Pin pin = pinRepo.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Pin does not exist with id :" + id));
+        return ResponseEntity.ok(pin);
+    }
+
+    @PutMapping("/pin/{id}")
+    public ResponseEntity<Pin> updatePin(@PathVariable long id, @RequestBody Pin pinDetails) {
+        Pin pin = pinRepo.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Pin does not exist with id :" + id));
+
+        pin.setTitle(pinDetails.getTitle());
+        pin.setDepartDate(pinDetails.getDepartDate());
+        pin.setLog(pinDetails.getLog());
+        pin.setImageUrl1(pinDetails.getImageUrl1());
+        pin.setImageUrl2(pinDetails.getImageUrl3());
+        pin.setImageUrl2(pinDetails.getImageUrl3());
+
+        Pin updatedPin = pinRepo.save(pin);
+        return ResponseEntity.ok(updatedPin);
     }
 }
 
