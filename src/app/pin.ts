@@ -4,6 +4,8 @@ export class Pin {
     lng!: string;
     title!: string;
     departDate!: string;
-    returnDate!: string;
     log!: string;
+    imageUrl1!: string;
+    imageUrl2!: string;
+    imageUrl3!: string;
 }
