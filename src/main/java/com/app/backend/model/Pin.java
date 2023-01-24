@@ -29,9 +29,10 @@ public class Pin implements Serializable {
     private String lng;
     private String title;
     private String departDate;
-    private String returnDate;
     private String log;
-
+    private String imageUrl1;
+    private String imageUrl2;
+    private String imageUrl3;
 
 
 
