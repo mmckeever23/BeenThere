@@ -6,10 +6,8 @@
         <label>Trip Title: </label>
         <input type="text" class="form-control" placeholder="What was the occassion for this trip?" id="title" name="title" [(ngModel)]="pin.title">
         <form class="form-inline">
-            <label>Departure Date: </label>
+            <label>Date: </label>
             <input type="date" class="form-control w-25" id="depart" name="depart" [(ngModel)]="pin.departDate">
-            <label>Return Date: </label>
-            <input type="date" class="form-control w-25" id="return" name="return" [(ngModel)]="pin.returnDate">
         </form>
         <label>Trip Log: </label>
         <textarea class="form-control" placeholder='What did you do there?' rows='5' cols='15' id="log" name="log" [(ngModel)]="pin.log"></textarea>

@@ -32,7 +32,7 @@ export class AppComponent implements OnInit{
         this.pins = data;
       },
       error: (error) => {
-        alert(error.message);
+        alert("There was a problem loading the pins.");
       }
     })
   }
@@ -121,7 +121,6 @@ export class AppComponent implements OnInit{
         marker.addListener("click", () => {
           this.pin.name=this.pins[i].name;
           this.pin.departDate=this.pins[i].departDate;
-          this.pin.returnDate=this.pins[i].returnDate;
           this.pin.log=this.pins[i].log;
           this.pin.title=this.pins[i].title;
           this.pin.lat=this.pins[i].lat;
