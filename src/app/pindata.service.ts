@@ -17,4 +17,5 @@ export class PindataService {
   getAllPins(): Observable<Pin[]>{
     return this.httpClient.get<Pin[]>(`${this.baseUrl}`);
   }
+
 }

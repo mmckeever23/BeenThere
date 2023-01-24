@@ -18,7 +18,6 @@ export class AppComponent implements OnInit{
 // Declare variables
 
   title = 'frontend';
-
   pin: Pin = new Pin();
   pins: Pin[]=[];
     
@@ -52,6 +51,12 @@ export class AppComponent implements OnInit{
 // Declaration of map object
 
     let map: google.maps.Map;
+
+// Send pin data to backend
+
+    this.pinDataService.getAllPins().subscribe(data=>{
+      this.pins=data;
+    })
 
 // Loader function
 
