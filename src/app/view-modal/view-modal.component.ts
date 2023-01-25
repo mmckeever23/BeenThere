@@ -24,6 +24,7 @@ export class ViewModalComponent {
     modalRef.componentInstance.pin = this.pin;
     modalRef.componentInstance.pins = this.pins;
     modalRef.componentInstance.id = this.pin.id;
+    this.activeModalService.dismiss();
   }
 
   openDeleteModal(){
