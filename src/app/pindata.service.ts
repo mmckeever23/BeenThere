@@ -12,7 +12,7 @@ export class PindataService {
 
   constructor(private httpClient: HttpClient) { }
 
-  savePins(pin: Pin): Observable<Object>{
+  savePin(pin: Pin): Observable<Object>{
     return this.httpClient.post(`${this.baseUrl}`, pin);
   }
 

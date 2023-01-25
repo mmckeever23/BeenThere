@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Pin } from '../pin';
 import { PindataService } from '../pindata.service';
 
 @Component({
