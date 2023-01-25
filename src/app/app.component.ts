@@ -6,7 +6,6 @@ import { UserLoginComponent } from './user-login/user-login.component';
 import { Pin } from './pin';
 import { PindataService } from './pindata.service';
 import { ViewModalComponent } from './view-modal/view-modal.component';
-import { NgForm } from '@angular/forms';
 import { UpdatePinComponent } from './update-pin/update-pin.component';
 
 @Component({
@@ -61,7 +60,7 @@ export class AppComponent implements OnInit{
 
     let map: google.maps.Map;
 
-// Send pin data to backend
+// Render all pins
 
     this.pinDataService.getAllPins().subscribe(data=>{
       this.pins=data;
@@ -73,7 +72,7 @@ export class AppComponent implements OnInit{
      
 // Load Login modal
 
-      // this.openLoginModal();
+      this.openLoginModal();
 
 // Render map
 

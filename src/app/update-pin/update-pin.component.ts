@@ -32,6 +32,7 @@ export class UpdatePinComponent {
       next: (data) => {
         alert("Pin edited!");
         this.modalService.dismiss();
+        
       },
       error: (error) => {
         alert("There was a problem editing this pin.");

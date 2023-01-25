@@ -24,6 +24,10 @@ export class UserLoginComponent implements OnInit {
     this.loginuserservice.loginUser(this.user).subscribe({
       next: (data) => {
       this.modalService.dismissAll();
+      let string = JSON.stringify(data);
+      string = string.substring(string.indexOf(":")+1);
+      string = string.substring(0, string.indexOf(","));
+      let idForTable = Number(string);
     },
       error: (error) => {
         alert("Username and/or password not correct.");

@@ -11,12 +11,14 @@ export class PinModalComponent {
 
   @Input() data: any;
   @Input() pin: any;
+  @Input() pins: any;
 
   constructor(private pinDataService: PindataService, public modalService: NgbActiveModal){}
 
   ngOnInit(): void {}
 
   pinSave(){
+    
     this.pinDataService.savePins(this.pin).subscribe({
       next: (data) => {
         alert("Pin saved!");
