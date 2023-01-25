@@ -21,7 +21,14 @@ export class AppComponent implements OnInit{
   title = 'frontend';
   pin: Pin = new Pin();
   pins: Pin[]=[];
-    
+
+  renderPins(){
+    this.pinDataService.getAllPins().subscribe(data=>{
+      this.pins=data;
+    })
+    alert("Updates saved!")
+  }
+
   constructor(private modalService: NgbModal, private pinDataService: PindataService) {}
 
 // Modal functions
@@ -62,9 +69,9 @@ export class AppComponent implements OnInit{
 
 // Render all pins
 
-    this.pinDataService.getAllPins().subscribe(data=>{
-      this.pins=data;
-    })
+  this.pinDataService.getAllPins().subscribe(data=>{
+    this.pins=data;
+  })
 
 // Loader function
 
@@ -76,7 +83,7 @@ export class AppComponent implements OnInit{
 
 // Render map
 
-      map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
+      const map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
         center: { lat: 35, lng: 5 },
         zoom: 3,
         minZoom: 2,
@@ -108,7 +115,7 @@ export class AppComponent implements OnInit{
           icon: "https://img.icons8.com/tiny-color/32/null/map-pin.png",
           animation: google.maps.Animation.DROP,
         })
-        marker.addListener("click", () => {
+          marker.addListener("click", () => {
           this.pin.id=this.pins[i].id;
           this.pin.name=this.pins[i].name;
           this.pin.departDate=this.pins[i].departDate;

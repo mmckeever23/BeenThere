@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { PindataService } from '../pindata.service';
 
@@ -17,12 +18,12 @@ export class PinModalComponent {
 
   ngOnInit(): void {}
 
-  onSubmit(){
+  onSubmit(newPin: NgForm){
     this.pinDataService.savePin(this.pin).subscribe({
       next: (data) => {
         alert("Pin saved!");
         this.modalService.dismiss();
-        
+        newPin.reset();  
       },
       error: (error) => {
         alert("There was a problem saving this pin.");
