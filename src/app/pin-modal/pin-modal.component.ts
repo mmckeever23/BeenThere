@@ -18,12 +18,11 @@ export class PinModalComponent {
 
   ngOnInit(): void {}
 
-  onSubmit(newPin: NgForm){
+  onSubmit(){
     this.pinDataService.savePin(this.pin).subscribe({
       next: (data) => {
         alert("Pin saved!");
         this.modalService.dismiss();
-        newPin.reset();  
       },
       error: (error) => {
         alert("There was a problem saving this pin.");

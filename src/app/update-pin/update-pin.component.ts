@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { AppComponent } from '../app.component';
 import { PindataService } from '../pindata.service';
 
 @Component({
@@ -12,6 +14,13 @@ export class UpdatePinComponent {
   @Input() data: any;
   @Input() pin: any;
   @Input() id: any;
+  @Input() pins: any;
+
+  renderPins(){
+    this.pinDataService.getAllPins().subscribe(data=>{
+      this.pins=data;
+    })
+  }
 
   constructor(private pinDataService: PindataService, public modalService: NgbActiveModal){}
 
@@ -29,12 +38,11 @@ export class UpdatePinComponent {
   onSubmit(){
     this.pinDataService.updatePin(this.pin.id, this.pin).subscribe({
       next: (data) => {
-        alert("Pin edited!");
+        alert("Pin updated!");
         this.modalService.dismiss();
-        
       },
       error: (error) => {
-        alert("There was a problem editing this pin.");
+        alert("There was a problem updating this pin.");
       }
     }) 
   }

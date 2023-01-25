@@ -23,7 +23,6 @@ export class UserLoginComponent implements OnInit {
   userLogin(login: NgForm){
     this.loginuserservice.loginUser(this.user).subscribe({
       next: (data) => {
-        alert("Login successful!");
       this.activeModalService.dismiss();
       let string = JSON.stringify(data);
       string = string.substring(string.indexOf(":")+1);
