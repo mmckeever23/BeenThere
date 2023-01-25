@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -35,7 +33,7 @@ public class PinController {
 // Get pin by id
 
     @GetMapping("/pin/{id}")
-    public ResponseEntity<Pin> getPinById(@PathVariable long id) {
+    public ResponseEntity<Pin> getPinById(@PathVariable Long id) {
         Pin pin = pinRepo.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Pin does not exist with id :" + id));
         return ResponseEntity.ok(pin);
@@ -44,19 +42,28 @@ public class PinController {
 // Update pin
 
     @PutMapping("/pin/{id}")
-    public ResponseEntity<Pin> updatePin(@PathVariable long id, @RequestBody Pin pinDetails) {
+    public ResponseEntity<Pin> updatePin(@PathVariable Long id, @RequestBody Pin pinDetails) {
         Pin pin = pinRepo.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Pin does not exist with id :" + id));
-
         pin.setTitle(pinDetails.getTitle());
         pin.setDepartDate(pinDetails.getDepartDate());
         pin.setLog(pinDetails.getLog());
         pin.setImageUrl1(pinDetails.getImageUrl1());
         pin.setImageUrl2(pinDetails.getImageUrl3());
         pin.setImageUrl2(pinDetails.getImageUrl3());
-
         Pin updatedPin = pinRepo.save(pin);
         return ResponseEntity.ok(updatedPin);
+    }
+
+// Delete pin
+    @DeleteMapping("/pin/{id}")
+    public ResponseEntity<Map<String, Boolean>> deletePin(@PathVariable Long id){
+        Pin pin = pinRepo.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Pin does not exist with id :" + id));
+        pinRepo.delete(pin);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("deleted", Boolean.TRUE);
+        return ResponseEntity.ok(response);
     }
 }
 
