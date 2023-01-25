@@ -80,13 +80,13 @@ aside {
     height: 0px;
     width: 0px;
     background-image: linear-gradient(to bottom right, white, #337AB7);
-    z-index: -1;
-    overflow: hidden;
+    overflow: scroll;
 }
 
 #hideComments {
-    margin-left: 25%;
-    margin-top: 20px;
+    margin: 15%;
+    margin-top: 15px;
+    margin-bottom: 15px;
     outline: none;
     border: none;
     background-color: white;
@@ -95,9 +95,7 @@ aside {
 }
 
 #hideComments:active {
-    transform: translateX(1px) translateY(2px);
+    /* transform: translateX(1px) translateY(2px); */
     background-color: black;
     color: white;
-    font-weight: bolder;
-
 }
