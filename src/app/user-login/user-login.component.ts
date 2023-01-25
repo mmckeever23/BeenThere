@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { LoginuserService } from '../loginuser.service';
 import { User } from '../user';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { RegisterUserComponent } from '../register-user/register-user.component';
 import { NgForm } from '@angular/forms';
 
@@ -15,7 +15,7 @@ export class UserLoginComponent implements OnInit {
   user:User = new User();
   data = '';
 
-  constructor(private loginuserservice: LoginuserService, private modalService: NgbModal) {}
+  constructor(private loginuserservice: LoginuserService, private modalService: NgbModal, private activeModalService: NgbActiveModal) {}
 
   ngOnInit(): void {      
   }
@@ -23,7 +23,8 @@ export class UserLoginComponent implements OnInit {
   userLogin(login: NgForm){
     this.loginuserservice.loginUser(this.user).subscribe({
       next: (data) => {
-      this.modalService.dismissAll();
+        alert("Login successful!");
+      this.activeModalService.dismiss();
       let string = JSON.stringify(data);
       string = string.substring(string.indexOf(":")+1);
       string = string.substring(0, string.indexOf(","));

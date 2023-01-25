@@ -28,4 +28,8 @@ export class PindataService {
     return this.httpClient.put(`${this.baseUrl}/${id}`, pin);
   }
 
+  deletePin(id: number): Observable<Object>{
+    return this.httpClient.delete(`${this.baseUrl}/${id}`);
+  }
+
 }

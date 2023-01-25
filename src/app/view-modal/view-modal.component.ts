@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { PinModalComponent } from '../pin-modal/pin-modal.component';
+import { DeleteModalComponent } from '../delete-modal/delete-modal.component';
 import { UpdatePinComponent } from '../update-pin/update-pin.component';
 
 @Component({
@@ -25,5 +25,13 @@ export class ViewModalComponent {
     modalRef.componentInstance.pins = this.pins;
     modalRef.componentInstance.id = this.pin.id;
   }
+
+  openDeleteModal(){
+    const modalRef = this.modalService.open(DeleteModalComponent, {size: 'md', modalDialogClass: 'modal-dialog-centered'});
+    modalRef.componentInstance.pin = this.pin;
+    modalRef.componentInstance.pins = this.pins;
+    modalRef.componentInstance.id = this.pin.id;
+  }
+
 }
 
