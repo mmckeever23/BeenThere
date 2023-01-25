@@ -2,9 +2,25 @@
   <a class="navbar-brand h1">
       <img src="https://img.icons8.com/tiny-color/32/null/map-pin.png" width="30" height="30" class="d-inline-block align-top" alt="">
       BeenThere</a>
+
+      <div class="dropdown">
+        <button id="dropbutton">See What Others Are Saying!</button>
+        <div class="dropdown_links">
+          <a href="#" class="commentLinks" id="viewComments2" onclick="document.querySelector('aside').style.height = '525px'; document.querySelector('aside').style.width = '250px'">View Comments</a><br>
+          <a href="#" class="commentLinks" id="leaveComment">Leave a Comment</a>
+        </div>
+      </div>
+
   <form class="form-inline">
     <input class="form-control" id="pac-input" type="search" placeholder="Search for Location to Pin" aria-label="Search">
   </form>
 </nav>
+
+<aside>
+ 
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium totam voluptatem voluptates perspiciatis quidem aspernatur in consectetur, est nam vitae velit? Nobis non, laborum unde ex at ut doloremque, vel vitae aliquid sed est quas earum, magni temporibus voluptatibus totam repellendus ducimus dolorem qui modi. Iste, hic. Eligendi nihil ex nisi iure recusandae adipisci excepturi velit numquam quam deleniti fuga similique perferendis, nulla architecto, minus optio? Dignissimos quia veniam quas. Similique, laudantium voluptas tempore quidem hic aut corrupti eum sapiente!<br>
+  
+    <button id="hideComments" onclick="document.querySelector('aside').style.height = '0px'; document.querySelector('aside').style.width = '0'">Hide Comments</button>
+</aside>
 
 <div class="full" id="map"></div>
