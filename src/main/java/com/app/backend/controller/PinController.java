@@ -26,7 +26,7 @@ public class PinController {
 // Create new pin
 
     @PostMapping("/pin")
-    public ResponseEntity<Pin> savePins(@RequestBody Pin pin) {
+    public ResponseEntity<Pin> savePin(@RequestBody Pin pin) {
         return ResponseEntity.ok(pinRepo.save(pin));
     }
 
