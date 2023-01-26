@@ -57,6 +57,12 @@ export class UserLoginComponent implements OnInit {
 
   openPinModal() {
     const modalRef = this.modalService.open(PinModalComponent, {size: 'lg', modalDialogClass: 'modal-dialog-centered'});
+    this.pin.title = "";
+    this.pin.departDate = "";
+    this.pin.log = "";
+    this.pin.imageUrl1 = "";
+    this.pin.imageUrl2 = "";
+    this.pin.imageUrl3 = "";
     modalRef.componentInstance.pin = this.pin;
   }
 
