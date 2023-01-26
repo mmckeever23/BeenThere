@@ -1,20 +1,19 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PindataService } from '../pindata.service';
 
 @Component({
-  selector: 'app-pin-modal',
-  templateUrl: './pin-modal.component.html',
-  styleUrls: ['./pin-modal.component.css']
+  selector: 'app-delete-modal',
+  templateUrl: './delete-modal.component.html',
+  styleUrls: ['./delete-modal.component.css']
 })
-export class PinModalComponent implements OnChanges {
+export class DeleteModalComponent implements OnChanges {
 
   @Input() data: any;
   @Input() pin: any;
   @Input() id: any;
-  @Input() pins: any;
 
-  constructor(private pinDataService: PindataService, public modalService: NgbActiveModal){}
+  constructor(private pinDataService: PindataService, public activeModalService: NgbActiveModal, private modalService: NgbModal){}
 
   ngOnChanges(): void {
     this.onSubmit();
@@ -32,16 +31,16 @@ export class PinModalComponent implements OnChanges {
   }
 
   onSubmit(){
-    this.pinDataService.savePin(this.pin).subscribe({
+    this.pinDataService.deletePin(this.pin.id).subscribe({
       next: (data) => {
-        alert("Pin saved!");
-        this.modalService.dismiss();
+        alert("Pin deleted!");
+        this.modalService.dismissAll();
       },
       error: (error) => {
-        alert("There was a problem saving this pin.");
+        alert("There was a problem deleting this pin.");
       }
     }) 
     location.reload();
-    window.location.reload();
   }
 }
+

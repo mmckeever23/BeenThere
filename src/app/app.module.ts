@@ -11,6 +11,7 @@ import { RegisterUserComponent } from './register-user/register-user.component';
 import { FormsModule } from '@angular/forms';
 import { ViewModalComponent } from './view-modal/view-modal.component';
 import { UpdatePinComponent } from './update-pin/update-pin.component';
+import { DeleteModalComponent } from './delete-modal/delete-modal.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { UpdatePinComponent } from './update-pin/update-pin.component';
     RegisterUserComponent,
     ViewModalComponent,
     UpdatePinComponent,
+    DeleteModalComponent,
   ],
   imports: [
     BrowserModule,

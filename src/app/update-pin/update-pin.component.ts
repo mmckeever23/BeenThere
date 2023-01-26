@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { PindataService } from '../pindata.service';
 
@@ -7,24 +7,47 @@ import { PindataService } from '../pindata.service';
   templateUrl: './update-pin.component.html',
   styleUrls: ['./update-pin.component.css']
 })
-export class UpdatePinComponent {
+export class UpdatePinComponent implements OnChanges {
 
   @Input() data: any;
   @Input() pin: any;
+  @Input() id: any;
+  @Input() pins: any;
+
+  renderPins(){
+    this.pinDataService.getAllPins().subscribe(data=>{
+      this.pins=data;
+    })
+  }
 
   constructor(private pinDataService: PindataService, public modalService: NgbActiveModal){}
 
-  ngOnInit(): void {}
+  ngOnChanges(): void {
+    this.onSubmit();
+  }
 
-  pinUpdate(){
-    this.pinDataService.savePins(this.pin).subscribe({
+  ngOnInit(): void {
+    this.pinDataService.getPinById(this.pin.id).subscribe({
       next: (data) => {
-        alert("Pin edited!");
-        this.modalService.dismiss();
-      },
+        this.pin = data;
+      }, 
       error: (error) => {
-        alert("There was a problem editing this pin.");
+        console.log(error)
       }
     })
   }
+
+  onSubmit(){
+    this.pinDataService.updatePin(this.pin.id, this.pin).subscribe({
+      next: (data) => {
+        alert("Pin updated!");
+        this.modalService.dismiss();
+        },
+      error: (error) => {
+        alert("There was a problem updating this pin.");
+      }
+    }) 
+    location.reload();
+  }
+
 }

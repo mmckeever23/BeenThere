@@ -1,3 +1,4 @@
+<form (ngSubmit) = "onSubmit()">
 <div class="modal-content">
     <div class="modal-header text-center d-block">
         <h4 class="modal-title d-inline-block">Create New Pin: "My Trip to {{pin.name}}"</h4>
@@ -17,11 +18,9 @@
         </div>
     </div>
     <div class="modal-footer">
-    <form (ngSubmit)="pinSave()">
         <button type="submit" class="btn btn-success">Create Pin</button>
-    </form>
         <button type="button" class="btn btn-warning" (click)="modalService.dismiss('Cross click')">Close</button>
     </div>
 </div>
-
+</form>
 

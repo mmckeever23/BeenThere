@@ -6,7 +6,7 @@ import { UserLoginComponent } from './user-login/user-login.component';
 import { Pin } from './pin';
 import { PindataService } from './pindata.service';
 import { ViewModalComponent } from './view-modal/view-modal.component';
-import { NgForm } from '@angular/forms';
+import { UpdatePinComponent } from './update-pin/update-pin.component';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +21,14 @@ export class AppComponent implements OnInit{
   title = 'frontend';
   pin: Pin = new Pin();
   pins: Pin[]=[];
-    
+
+  renderPins(){
+    this.pinDataService.getAllPins().subscribe(data=>{
+      this.pins=data;
+    })
+    alert("Updates saved!")
+  }
+
   constructor(private modalService: NgbModal, private pinDataService: PindataService) {}
 
 // Modal functions
@@ -41,6 +48,13 @@ export class AppComponent implements OnInit{
     modalRef.componentInstance.pins = this.pins;
   }
 
+  openUpdateModal(){
+    const modalRef = this.modalService.open(UpdatePinComponent, {size: 'lg', modalDialogClass: 'modal-dialog-centered'});
+    modalRef.componentInstance.pin = this.pin;
+    modalRef.componentInstance.pins = this.pins;
+    modalRef.componentInstance.id = this.pin.id;
+  }
+
 // Google Maps JavaScript API Loader
 
   ngOnInit():void {
@@ -53,11 +67,11 @@ export class AppComponent implements OnInit{
 
     let map: google.maps.Map;
 
-// Send pin data to backend
+// Render all pins
 
-    this.pinDataService.getAllPins().subscribe(data=>{
-      this.pins=data;
-    })
+  this.pinDataService.getAllPins().subscribe(data=>{
+    this.pins=data;
+  })
 
 // Loader function
 
@@ -65,11 +79,11 @@ export class AppComponent implements OnInit{
      
 // Load Login modal
 
-      this.openLoginModal();
+      // this.openLoginModal();
 
 // Render map
 
-      map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
+      const map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
         center: { lat: 35, lng: 5 },
         zoom: 3,
         minZoom: 2,
@@ -101,7 +115,8 @@ export class AppComponent implements OnInit{
           icon: "https://img.icons8.com/tiny-color/32/null/map-pin.png",
           animation: google.maps.Animation.DROP,
         })
-        marker.addListener("click", () => {
+          marker.addListener("click", () => {
+          this.pin.id=this.pins[i].id;
           this.pin.name=this.pins[i].name;
           this.pin.departDate=this.pins[i].departDate;
           this.pin.log=this.pins[i].log;
