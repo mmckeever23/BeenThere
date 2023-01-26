@@ -29,7 +29,7 @@
     <label for="textComments"></label><br>
     <textarea id="textComments" style="resize:none" minlength="2" maxlength="250" placeholder="Leave a message for {User}" required></textarea>
 
-    <button id="postComments" class="commentBtn" type="button" onclick="document.getElementById('comment1name').innerHTML = document.getElementById('name').value; document.getElementById('comment1email').innerHTML = document.getElementById('email').value; document.getElementById('comment1text').innerHTML = document.querySelector('textarea').value; document.getElementById('postComment').style.height = '0px'; document.getElementById('postComment').style.width = '0px'; document.getElementById('viewComments').style.height = '525px'; document.getElementById('viewComments').style.width = '250px'; document.getElementById('name').value = ''; document.getElementById('email').value = ''; document.querySelector('textarea').value = '' ">Post Comment</button><br>
+    <button id="postComments" class="commentBtn" type="button" onclick="document.getElementById('comment1name').innerHTML = document.getElementById('name').value; document.getElementById('comment1email').innerHTML = '(' + document.getElementById('email').value + ')' + '   says:'; document.getElementById('comment1text').innerHTML = '*' + document.querySelector('textarea').value + '*'; document.getElementById('postComment').style.height = '0px'; document.getElementById('postComment').style.width = '0px'; document.getElementById('viewComments').style.height = '525px'; document.getElementById('viewComments').style.width = '250px'; document.getElementById('name').value = ''; document.getElementById('email').value = ''; document.querySelector('textarea').value = '' ">Post Comment</button><br>
 
     <button id="resetComments" class="commentBtn" type="reset">Reset Form</button><br>
 
@@ -44,11 +44,11 @@
 <aside id="viewComments">
   
   <div class="commentDiv" id="comment1">
-    <p class="comments">
       <span id="comment1name"></span><br>
       <span id="comment1email"></span><br>
-      <span id="comment1text"></span>
-    </p>
+      <div class="innerCommentDiv">
+      <span id="comment1text">Be the first to leave a comment!</span>
+      </div>
   </div>
   
   <button id="hideComments" class="commentBtn" onclick="document.getElementById('viewComments').style.height = '0px'; document.getElementById('viewComments').style.width = '0'">Hide Comments</button>
