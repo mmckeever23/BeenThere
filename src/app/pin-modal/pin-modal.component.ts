@@ -30,11 +30,11 @@ export class PinModalComponent {
   onSubmit(){
     this.pinDataService.savePin(this.pin).subscribe({
       next: (data) => {
-        alert("Pin saved!");
+        alert("Pin created!");
         this.modalService.dismiss();
       },
       error: (error) => {
-        alert("There was a problem saving this pin.");
+        alert("There was a problem creating this pin.");
       }
     }) 
   }
