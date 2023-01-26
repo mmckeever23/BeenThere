@@ -90,6 +90,16 @@ aside#postComment {
     overflow: scroll;
 }
 
+aside#sendUserEmail {
+    float: right;
+    height: 0px;
+    width: 0px;
+    background-color: cornflowerblue;
+    overflow: scroll;
+}
+
+
+
 .commentBtn {
     outline: none;
     width: 150px;
@@ -108,7 +118,7 @@ aside#postComment {
     color: white;
 }
 
-.commentInput {
+.commentInput, .emailInput {
     margin-left: 25px;
     background-color: #f9f9f9;
     text-align: center;
