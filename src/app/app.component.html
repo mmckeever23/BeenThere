@@ -6,11 +6,11 @@
       <div class="dropdown">
         <button id="dropbutton">See What Others Are Saying!</button>
         <div class="dropdown_links">
-          <a href="#" class="commentLinks" id="viewC" onclick="document.getElementById('viewComments').style.height = '525px'; document.getElementById('viewComments').style.width = '250px'; document.getElementById('postComment').style.height = '0px'; document.getElementById('postComment').style.width = '0px'; document.getElementById('sendUserEmail').style.height = '0'; document.getElementById('sendUserEmail').width = '0'">View Comments</a>
+          <a href="#" class="commentLinks" id="viewC" onclick="document.getElementById('viewComments').style.height = '92vh'; document.getElementById('viewComments').style.width = '250px'; document.getElementById('postComment').style.height = '0px'; document.getElementById('postComment').style.width = '0px'; document.getElementById('sendUserEmail').style.height = '0'; document.getElementById('sendUserEmail').width = '0'">View Comments</a>
 
-          <a href="#" class="commentLinks" id="postC" onclick="document.getElementById('postComment').style.height = '525px'; document.getElementById('postComment').style.width = '250px'; document.getElementById('viewComments').style.height = '0px'; document.getElementById('viewComments').style.width = '0'; document.getElementById('sendUserEmail').style.height = '0'; document.getElementById('sendUserEmail').width = '0'">Leave a Comment</a>
+          <a href="#" class="commentLinks" id="postC" onclick="document.getElementById('postComment').style.height = '92vh'; document.getElementById('postComment').style.width = '250px'; document.getElementById('viewComments').style.height = '0px'; document.getElementById('viewComments').style.width = '0'; document.getElementById('sendUserEmail').style.height = '0'; document.getElementById('sendUserEmail').width = '0'">Leave a Comment</a>
 
-          <a href="#" class="commentLinks" id="sendEmail" onclick="document.getElementById('sendUserEmail').style.height = '525px'; document.getElementById('sendUserEmail').style.width = '250px'; document.getElementById('postComment').style.height = '0px'; document.getElementById('postComment').style.width = '0px'; document.getElementById('viewComments').style.height = '0px'; document.getElementById('viewComments').style.width = '0'">Send an E-mail</a>
+          <a href="#" class="commentLinks" id="sendEmail" onclick="document.getElementById('sendUserEmail').style.height = '92vh'; document.getElementById('sendUserEmail').style.width = '250px'; document.getElementById('postComment').style.height = '0px'; document.getElementById('postComment').style.width = '0px'; document.getElementById('viewComments').style.height = '0px'; document.getElementById('viewComments').style.width = '0'">Send an E-mail</a>
         </div>
       </div>
 
@@ -29,11 +29,11 @@
     <label for="textComments">Comments:</label><br>
     <textarea id="textComments" style="resize:none" minlength="2" maxlength="250" placeholder="Leave a message for {User}" required></textarea>
 
-    <button id="postComments" class="commentBtn" type="button" onclick="document.getElementById('comment1name').innerHTML = document.getElementById('name').value; document.getElementById('comment1email').innerHTML = '(' + document.getElementById('email').value + ')' + '   says:'; document.getElementById('comment1text').innerHTML = '*' + document.querySelector('textarea').value + '*'; document.getElementById('postComment').style.height = '0px'; document.getElementById('postComment').style.width = '0px'; document.getElementById('viewComments').style.height = '525px'; document.getElementById('viewComments').style.width = '250px'; document.getElementById('name').value = ''; document.getElementById('email').value = ''; document.querySelector('textarea').value = '' ">Post Comment</button><br>
+    <button id="postComments" class="commentBtn" type="button" onclick="document.getElementById('comment1name').innerHTML = document.getElementById('name').value; document.getElementById('comment1email').innerHTML = '(' + document.getElementById('email').value + ')' + '   says:'; document.getElementById('comment1text').innerHTML = '*' + document.querySelector('textarea').value + '*'; document.getElementById('postComment').style.height = '0px'; document.getElementById('postComment').style.width = '0px'; document.getElementById('viewComments').style.height = '92vh'; document.getElementById('viewComments').style.width = '250px'; document.getElementById('name').value = ''; document.getElementById('email').value = ''; document.querySelector('textarea').value = '' ">Post Comment</button><br>
 
     <button id="resetComments" class="commentBtn" type="reset">Reset Form</button><br>
 
-    <button id="exitComments" class="commentBtn" type="button" onclick="document.getElementById('postComment').style.height = '0px'; document.getElementById('postComment').style.width = '0px'; document.getElementById('viewComments').style.height = '525px'; document.getElementById('viewComments').style.width = '250px'">View Comments</button><br>
+    <button id="exitComments" class="commentBtn" type="button" onclick="document.getElementById('postComment').style.height = '0px'; document.getElementById('postComment').style.width = '0px'; document.getElementById('viewComments').style.height = '92vh'; document.getElementById('viewComments').style.width = '250px'">View Comments</button><br>
 
     <button id="exitForm" class="commentBtn" type="button" onclick="document.getElementById('postComment').style.height = '0'; document.getElementById('postComment').style.width = '0'">Exit Form</button>
     
@@ -53,7 +53,7 @@
   
   <button id="hideComments" class="commentBtn" onclick="document.getElementById('viewComments').style.height = '0px'; document.getElementById('viewComments').style.width = '0'">Hide Comments</button>
 
-  <button id="toLeaveComments" class="commentBtn" onclick="document.getElementById('viewComments').style.height = '0px'; document.getElementById('viewComments').style.width = '0'; document.getElementById('postComment').style.height = '525px'; document.getElementById('postComment').style.width = '250px'">Leave a Comment</button>
+  <button id="toLeaveComments" class="commentBtn" onclick="document.getElementById('viewComments').style.height = '0px'; document.getElementById('viewComments').style.width = '0'; document.getElementById('postComment').style.height = '92vh'; document.getElementById('postComment').style.width = '250px'">Leave a Comment</button>
 </aside>
 
 <aside id="sendUserEmail">
@@ -79,6 +79,7 @@
   </form>
 
 </aside>
+
 
 <script>
   function sendEmail() {
