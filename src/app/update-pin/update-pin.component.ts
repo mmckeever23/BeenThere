@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { PindataService } from '../pindata.service';
 
@@ -7,7 +7,7 @@ import { PindataService } from '../pindata.service';
   templateUrl: './update-pin.component.html',
   styleUrls: ['./update-pin.component.css']
 })
-export class UpdatePinComponent implements OnChanges {
+export class UpdatePinComponent {
 
   @Input() data: any;
   @Input() pin: any;
@@ -21,10 +21,6 @@ export class UpdatePinComponent implements OnChanges {
   }
 
   constructor(private pinDataService: PindataService, public modalService: NgbActiveModal){}
-
-  ngOnChanges(): void {
-    this.onSubmit();
-  }
 
   ngOnInit(): void {
     this.pinDataService.getPinById(this.pin.id).subscribe({
@@ -47,7 +43,5 @@ export class UpdatePinComponent implements OnChanges {
         alert("There was a problem updating this pin.");
       }
     }) 
-    location.reload();
   }
-
 }
