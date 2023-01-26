@@ -79,7 +79,7 @@ export class AppComponent implements OnInit{
      
 // Load Login modal
 
-      this.openLoginModal();
+      // this.openLoginModal();
 
 // Render map
 
