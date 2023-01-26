@@ -6,8 +6,10 @@
       <div class="dropdown">
         <button id="dropbutton">See What Others Are Saying!</button>
         <div class="dropdown_links">
-          <a href="#" class="commentLinks" id="viewComments2" onclick="document.querySelector('aside').style.height = '525px'; document.querySelector('aside').style.width = '200px'">View Comments</a>
-          <a href="#" class="commentLinks" id="leaveComment">Leave a Comment</a>
+          <a href="#" class="commentLinks" id="viewC" onclick="document.getElementById('viewComments').style.height = '525px'; document.getElementById('viewComments').style.width = '250px'; document.getElementById('postComment').style.height = '0px'; document.getElementById('postComment').style.width = '0px'">View Comments</a>
+
+          <a href="#" class="commentLinks" id="postC" onclick="document.getElementById('postComment').style.height = '525px'; document.getElementById('postComment').style.width = '250px'; document.getElementById('viewComments').style.height = '0px'; document.getElementById('viewComments').style.width = '0'">Leave a Comment</a>
+
           <a href="#" class="commentLinks" id="sendEmail">Send an E-mail</a>
         </div>
       </div>
@@ -17,11 +19,40 @@
   </form>
 </nav>
 
-<aside>
- 
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium totam voluptatem voluptates perspiciatis quidem aspernatur in consectetur, est nam vitae velit? Nobis non, laborum unde ex at ut doloremque, vel vitae aliquid sed est quas earum, magni temporibus voluptatibus totam repellendus ducimus dolorem qui modi. Iste, hic. Eligendi nihil ex nisi iure recusandae adipisci excepturi velit numquam quam deleniti fuga similique perferendis, nulla architecto, minus optio? Dignissimos quia veniam quas. Similique, laudantium voluptas tempore quidem hic aut corrupti eum sapiente!<br>
+<aside id="postComment">
+
+  <form id="commentForm">
+    <label for="name"></label><br>
+    <input class="commentInput" id="name" placeholder="Enter name here." required><br>
+    <label for="email"></label><br>
+    <input class="commentInput" id="email" placeholder="name@example.com" required><br>
+    <label for="textComments"></label><br>
+    <textarea id="textComments" style="resize:none" minlength="2" maxlength="250" placeholder="Leave a message for {User}" required></textarea>
+
+    <button id="postComments" class="commentBtn" type="button">Post Comment</button><br>
+
+    <button id="resetComments" class="commentBtn" type="reset">Reset Form</button><br>
+
+    <button id="exitComments" class="commentBtn" type="button" onclick="document.getElementById('postComment').style.height = '0px'; document.getElementById('postComment').style.width = '0px'; document.getElementById('viewComments').style.height = '525px'; document.getElementById('viewComments').style.width = '250px'">View Comments</button><br>
+
+    <button id="exitForm" class="commentBtn" type="button" onclick="document.getElementById('postComment').style.height = '0'; document.getElementById('postComment').style.width = '0'">Exit Form</button>
+    
+  </form>
+
+</aside>
+
+<aside id="viewComments">
   
-    <button id="hideComments" onclick="document.querySelector('aside').style.height = '0px'; document.querySelector('aside').style.width = '0'">Hide Comments</button>
+  <div class="commentDiv" id="comment1">
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur, optio.</p>
+  </div>
+  
+  <button id="hideComments" class="commentBtn" onclick="document.getElementById('viewComments').style.height = '0px'; document.getElementById('viewComments').style.width = '0'">Hide Comments</button>
+
+  <button id="toLeaveComments" class="commentBtn" onclick="document.getElementById('viewComments').style.height = '0px'; document.getElementById('viewComments').style.width = '0'; document.getElementById('postComment').style.height = '525px'; document.getElementById('postComment').style.width = '250px'">Leave a Comment</button>
+
+
+
 </aside>
 
 <div class="full" id="map"></div>

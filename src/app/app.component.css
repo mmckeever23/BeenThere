@@ -30,13 +30,11 @@
     display: none;
     position: absolute;
     background-color: #f9f9f9;
-    /* border: 2px solid #337AB7; */
     border: 2px solid black;
     border-radius: 10px;
     min-width: 250px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    /* margin-top: 20px; */
   }
 
   .dropdown_links a {
@@ -73,29 +71,103 @@
 
 /* Comment section displayed on right of screen */
 
-aside {
+
+aside#viewComments {
     float: right;
-    /* height: 525px; */
-    /* width: 250px; */
     height: 0px;
     width: 0px;
-    background-image: linear-gradient(to bottom right, white, #337AB7);
+    /* background-image: linear-gradient(to bottom left, #337AB7, white, #337AB7); */
+    background-color:cornflowerblue;
     overflow: scroll;
 }
 
-#hideComments {
-    margin: 15%;
-    margin-top: 15px;
-    margin-bottom: 15px;
+aside#postComment {
+    float: right;
+    height: 0px;
+    width: 0px;
+    /* background-image: linear-gradient(to bottom left, #337AB7, white, #337AB7); */
+    background-color: cornflowerblue;
+    overflow: scroll;
+}
+
+.commentBtn {
     outline: none;
-    border: none;
+    border: 1px solid black;
     background-color: white;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     border-radius: 10px;
 }
 
-#hideComments:active {
-    /* transform: translateX(1px) translateY(2px); */
+#hideComments {
+    margin-left: 25%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#toLeaveComments {
+    margin-left: 22.5%;
+}
+
+#postComments {
+    margin-left: 60px;
+    margin-top: 15px;
+}
+
+#resetComments {
+    margin-left: 75px;
+    margin-top: 12px;
+
+}
+
+#exitComments {
+    margin-left: 40px;
+    margin-top: 12px;
+}
+
+#exitForm {
+    margin-left: 85px;
+    margin-top: 12px;
+}
+
+.commentBtn:active {
+    transform: translateX(2px) translateY(2px);
     background-color: black;
     color: white;
+}
+
+.commentInput {
+    margin-left: 25px;
+    background-color: #f9f9f9;
+    text-align: center;
+    color: black;
+    font-size: 0.9rem;
+    font-style: italic;
+    min-width: 80%;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid black;
+    border-radius: 10px;
+}
+
+textarea {
+    margin-left: 25px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    height: 200px;
+    font-size: 0.9rem;
+    text-align: center;
+    min-width: 80%;
+    font-style: italic;
+    border-radius: 10px;
+    border-bottom: 2px solid black;
+    outline: none;
+    overflow: hidden;
+}
+
+.commentDiv {
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 0.8rem;
 }
