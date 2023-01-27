@@ -3,14 +3,16 @@
   </a>
   <img id="logo" src="https://i.ibb.co/n8Hm2Hc/Beenthere-final.png" width="200" height="50" alt="Beenthere-final">
   <img id="subLogo" src="https://i.ibb.co/yq8mYgJ/pin.png" width="30" height="30" class="d-inline-block align-top" alt="">  
-      <button id="saveButton" type="button" class="btn btn-light" (click)="renderPins()">Save Updates</button>
+      
       
       <form class="form-inline">
         <input class="form-control" id="pac-input" type="search" placeholder="Search for Location to Pin" aria-label="Search">
       </form>
       
+      <button id="saveButton" type="button" class="btn btn-outline-light" (click)="renderPins()">Save Updates</button>
       <div class="dropdown">
-        <button id="dropbutton">See What Others Are Saying!</button>
+        <button id="dropbutton" type="button" class="btn btn-outline-light">See What Others Are Saying!</button>
+
         <div class="dropdown_links">
           <a href="#" class="commentLinks" id="viewC" onclick="document.getElementById('viewComments').style.height = '92vh'; document.getElementById('viewComments').style.width = '250px'; document.getElementById('postComment').style.height = '0px'; document.getElementById('postComment').style.width = '0px'; document.getElementById('sendUserEmail').style.height = '0'; document.getElementById('sendUserEmail').width = '0'">View Comments</a>
 
@@ -36,7 +38,7 @@
     <a href="#" class="navbar-brand">View All Pins</a>
   </li>
   <li class="nav-item">
-    <a href="#" class="navbar-brand">Share</a>
+    <a href="#" class="navbar-brand">Share Map</a>
     </li>
     <li class="nav-item">
       <a href="#" class="navbar-brand" (click)="reloadPage()">Logout</a>
