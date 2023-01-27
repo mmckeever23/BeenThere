@@ -4,23 +4,19 @@
 }
 
 .navbar {
-    background-color: #337AB7; 
+    background-color: #00ABE4; 
     padding-left: 10px;
     padding-right: 15px;
 }
 
 .navbar-brand {
     color: white;
-    font-size: 25px;
-    margin-top: 5px;
-}
-
-#saveButton {
-    margin-left: 175px;
+    font-size: 20px;
 }
 
 .form-control {
     width:450px;
+    margin-left: 532px;
 }
 
 li{
@@ -35,10 +31,6 @@ float: left;
 #subLogo {
     position: absolute;
     left: 215px;
-}
-
-#searchbar {
-    position: center;
 }
 
 /* Create dropdown menu for comment links  */
@@ -79,17 +71,16 @@ float: left;
 }
 
 
-#dropbutton {
+/* #dropbutton {
     color: white;
     background-color: #337AB7;
     outline: none;
     border: none;
     font-size: 1.125em;
     font-weight: bold;
-    font-style: italic;
     position: relative;
     display: inline-block;
-}
+} */
 
 /* Comment section displayed on right of screen */
 
