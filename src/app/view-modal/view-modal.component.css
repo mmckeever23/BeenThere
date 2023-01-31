@@ -18,10 +18,10 @@ textarea {
 img {
     height: 500px;
     width: 100%;
-    padding-top: 20px;
+    padding-top: 25px;
     padding-left: 20px;
     padding-right: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 25px;
  }
 
 img[src=""] {
@@ -32,4 +32,9 @@ img[src=""] {
     padding-top: 20px;
     font-weight: bold;
     color: #337AB7;
+    padding-left: 15px;
+}
+
+h5 {
+    padding-left: 15px;
 }
