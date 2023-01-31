@@ -12,7 +12,6 @@ import { FormsModule } from '@angular/forms';
 import { ViewModalComponent } from './view-modal/view-modal.component';
 import { UpdatePinComponent } from './update-pin/update-pin.component';
 import { DeleteModalComponent } from './delete-modal/delete-modal.component';
-import { QuillModule } from 'ngx-quill';
 
 @NgModule({
   declarations: [
@@ -32,7 +31,6 @@ import { QuillModule } from 'ngx-quill';
     HttpClientJsonpModule,
     NgbModule,
     FormsModule,
-    QuillModule
   ],
   providers: [
     NgbActiveModal,
