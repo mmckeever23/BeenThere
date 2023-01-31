@@ -100,7 +100,7 @@ export class AppComponent implements OnInit{
 // Google Maps JavaScript API Loader
 
   ngOnInit():void {
-    this.openViewModal();
+    this.openLoginModal();
   }
 
 }   

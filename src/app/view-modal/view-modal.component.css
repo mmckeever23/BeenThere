@@ -15,21 +15,21 @@ textarea {
     width: 95%;
   }
 
-label {
-    margin: 30px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
-
 img {
     height: 500px;
     width: 100%;
-    padding-top: 10px;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-bottom: 30px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
  }
 
 img[src=""] {
     display: none;
+}
+
+.blue {
+    padding-top: 20px;
+    font-weight: bold;
+    color: #337AB7;
 }

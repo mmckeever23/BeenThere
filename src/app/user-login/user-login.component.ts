@@ -50,7 +50,7 @@ export class UserLoginComponent implements OnInit {
   }
 
   openViewModal(){
-    const modalRef = this.modalService.open(ViewModalComponent, {size: 'lg', modalDialogClass: 'modal-dialog-centered'});
+    const modalRef = this.modalService.open(ViewModalComponent, {size: 'xl', modalDialogClass: 'modal-dialog-centered'});
     modalRef.componentInstance.pin = this.pin;
     modalRef.componentInstance.pins = this.pins;
   }
