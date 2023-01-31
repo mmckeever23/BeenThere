@@ -1,129 +1,20 @@
 <nav class="navbar navbar expand-md navbar-dark">
   <a class="navbar-brand h1">
-  </a>
-  <img id="logo" src="https://i.ibb.co/n8Hm2Hc/Beenthere-final.png" width="200" height="50" alt="Beenthere-final">
-  <img id="subLogo" src="https://i.ibb.co/yq8mYgJ/pin.png" width="30" height="30" class="d-inline-block align-top" alt="">  
-      
-      
-      <form class="form-inline">
-        <input class="form-control" id="pac-input" type="search" placeholder="Search for Location to Pin" aria-label="Search">
-      </form>
-      
-      <button id="saveButton" type="button" class="btn btn-outline-light" (click)="renderPins()">Save Updates</button>
-      <div class="dropdown">
-        <button id="dropbutton" type="button" class="btn btn-outline-light">See What Others Are Saying!</button>
-
-        <div class="dropdown_links">
-          <a href="#" class="commentLinks" id="viewC" onclick="document.getElementById('viewComments').style.height = '92vh'; document.getElementById('viewComments').style.width = '250px'; document.getElementById('postComment').style.height = '0px'; document.getElementById('postComment').style.width = '0px'; document.getElementById('sendUserEmail').style.height = '0'; document.getElementById('sendUserEmail').width = '0'">View Comments</a>
-
-          <a href="#" class="commentLinks" id="postC" onclick="document.getElementById('postComment').style.height = '92vh'; document.getElementById('postComment').style.width = '250px'; document.getElementById('viewComments').style.height = '0px'; document.getElementById('viewComments').style.width = '0'; document.getElementById('sendUserEmail').style.height = '0'; document.getElementById('sendUserEmail').width = '0'">Leave a Comment</a>
-
-          <a href="#" class="commentLinks" id="sendEmail" onclick="document.getElementById('sendUserEmail').style.height = '92vh'; document.getElementById('sendUserEmail').style.width = '250px'; document.getElementById('postComment').style.height = '0px'; document.getElementById('postComment').style.width = '0px'; document.getElementById('viewComments').style.height = '0px'; document.getElementById('viewComments').style.width = '0'">Send an E-mail</a>
-        </div>
-      </div>
-
-
-
-  
-  <div class="container-inline">
-    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-label="Expand Navigation">
-      <div class="navbar-toggler-icon"></div>
-    </button>
-    <div class="collapse navbar-collapse" id="nav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-    <a href="#" class="navbar-brand">Create Trip</a>
-        </li>
-    <li class="nav-item">
-    <a href="#" class="navbar-brand">View All Pins</a>
-  </li>
-  <li class="nav-item">
-    <a href="#" class="navbar-brand">Share Map</a>
-    </li>
-    <li class="nav-item">
-      <a href="#" class="navbar-brand" (click)="reloadPage()">Logout</a>
-      </li>
-       </ul>
-  </div>    
+<!-- Logo   -->
+    <img src="https://img.icons8.com/tiny-color/32/null/map-pin.png" width="30" height="30" class="d-inline-block align-top" alt="">
+    BeenThere</a>
+  <div class="d-flex justify-content-end">  
+<!-- Update Button -->
+    <button id="saveButton" type="button" class="btn btn-success" (click)="renderPins()">Save Updates</button> 
+<!-- Search Bar -->
+    <form class="form-inline">
+      <input class="form-control" id="pac-input" type="search" placeholder="Search for Location to Pin" aria-label="Search">
+    </form>
+<!-- Logout Button -->
+    <button id="reloadButton" type="button" class="btn btn-warning" (click)="reloadPage()">Logout</button>
   </div>
 </nav>
-
-<aside id="postComment">
-
-  <form id="commentForm">
-    <label for="name">Name:</label><br>
-    <input class="commentInput" id="name" placeholder="Enter name here." required><br>
-    <label for="email">E-mail:</label><br>
-    <input class="commentInput" id="email" placeholder="name@example.com" required><br>
-    <label for="textComments">Comments:</label><br>
-    <textarea id="textComments" style="resize:none" minlength="2" maxlength="250" placeholder="Leave a message for {User}" required></textarea>
-
-    <button id="postComments" class="commentBtn" type="button" onclick="document.getElementById('comment1name').innerHTML = document.getElementById('name').value; document.getElementById('comment1email').innerHTML = '(' + document.getElementById('email').value + ')' + '   says:'; document.getElementById('comment1text').innerHTML = '*' + document.querySelector('textarea').value + '*'; document.getElementById('postComment').style.height = '0px'; document.getElementById('postComment').style.width = '0px'; document.getElementById('viewComments').style.height = '92vh'; document.getElementById('viewComments').style.width = '250px'; document.getElementById('name').value = ''; document.getElementById('email').value = ''; document.querySelector('textarea').value = '' ">Post Comment</button><br>
-
-    <button id="resetComments" class="commentBtn" type="reset">Reset Form</button><br>
-
-    <button id="exitComments" class="commentBtn" type="button" onclick="document.getElementById('postComment').style.height = '0px'; document.getElementById('postComment').style.width = '0px'; document.getElementById('viewComments').style.height = '92vh'; document.getElementById('viewComments').style.width = '250px'">View Comments</button><br>
-
-    <button id="exitForm" class="commentBtn" type="button" onclick="document.getElementById('postComment').style.height = '0'; document.getElementById('postComment').style.width = '0'">Exit Form</button>
-
-  </form>
-
-</aside>
-
-<aside id="viewComments">
-
-  <div class="commentDiv" id="comment1">
-      <span id="comment1name"></span><br>
-      <span id="comment1email"></span><br>
-      <div class="innerCommentDiv">
-      <span id="comment1text">Be the first to leave a comment!</span>
-      </div>
-  </div>
-
-  <button id="hideComments" class="commentBtn" onclick="document.getElementById('viewComments').style.height = '0px'; document.getElementById('viewComments').style.width = '0'">Hide Comments</button>
-
-  <button id="toLeaveComments" class="commentBtn" onclick="document.getElementById('viewComments').style.height = '0px'; document.getElementById('viewComments').style.width = '0'; document.getElementById('postComment').style.height = '92vh'; document.getElementById('postComment').style.width = '250px'">Leave a Comment</button>
-</aside>
-
-<aside id="sendUserEmail">
-
-  <form id="emailForm" method="post" action="email.php" onsubmit="sendEmail(); return false">
-    <label for="emailName">Name</label><br>
-    <input type="text" class="emailInput" id="emailName" placeholder="Enter name here." required><br>
-    <label for="emailEmail">Email</label><br>
-    <input type="email" class="emailInput" id="emailEmail" placeholder="name@example.com" required><br>
-    <label for="emailSubject">Subject</label><br>
-    <input type ="text" class="emailInput" id="emailSubject" placeholder="Enter subject here" required><br>
-    <label for="emailMessage"></label><br>
-    <textarea type="text" id="emailMessage" style="resize:none" minlength="2" placeholder="Type your email here." required></textarea>
-
-    <div class="commentDiv" id="emailDiv">
-
-    <button class="commentBtn" id="sendEmailBtn" type="submit" value="submit" onclick="document.getElementById('sendUserEmail').style.height = '0'; document.getElementById('sendUserEmail').width = '0'; document.getElementById('emailName').value = ''; document.getElementById('emailEmail').value = ''; document.getElementById('emailSubject').value = ''; document.getElementById('emailMessage').value = ''; window.alert('Your email has been sent!'); ">Send Email</button>
-
-    <button class="commentBtn" id="resetEmailBtn" type="reset">Reset Form</button>
-
-    <button class="commentBtn" id="exitEmailBtn" type="button" onclick="document.getElementById('sendUserEmail').style.height = '0'; document.getElementById('sendUserEmail').width = '0'">Close Form</button>
-    </div>
-  </form>
-
-</aside>
-
-<script>
-  function sendEmail() {
-    const name = document.getElementById("emailName").value;
-    const email = document.getElementById("emailEmail").value;
-    const subject = document.getElementById("emailSubject").value;
-    const message = document.getElementById("emailMessage").value;
-
-    const xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "email.php", true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("name=" + name + "&email=" + email + "&message=" + message);
-  }
-  </script>
-
-
+<!-- Map -->
 <div class="full" id="map"></div>
 
 

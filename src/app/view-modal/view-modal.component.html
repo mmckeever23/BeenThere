@@ -1,21 +1,36 @@
 <div class="modal-content">
+
+
+
   <div class="modal-header text-center d-block">
       <h4 class="modal-title d-inline-block">My Trip to {{pin.name}}</h4>
   </div>
+
+
+<div class="container">
+  <div class="row">
+  <div class = "col">
   <div class="form-group">
       <label id="title"><b>Event Title: </b>{{pin.title}}</label><br>
       <label id="departDate"><b>Date: </b>{{pin.departDate}}</label><br>
       <label id="log"><b>Log: </b>{{pin.log}}</label><br>
+  </div>
+  </div>
+
+  <div class = "col">
       <div id="carousel" class="carousel slide" data-bs-ride="carousel" data-interval="false">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="{{pin.imageUrl1}}" alt=" ">
+              <!-- <img src="{{pin.imageUrl1}}" alt=" "> -->
+              <img src="http://www.ballparksofbaseball.com/wp-content/uploads/2016/03/busch17951.jpg" alt=" ">
             </div>
             <div class="carousel-item">
-              <img src="{{pin.imageUrl2}}" alt=" ">
+              <!-- <img src="{{pin.imageUrl2}}" alt=" "> -->
+              <img src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/busch-stadium-st-louis-cardinals-dsc08851-greg-kluempers.jpg" alt=" ">
             </div>
             <div class="carousel-item">
-              <img src="{{pin.imageUrl3}}" alt=" ">
+              <!-- <img src="{{pin.imageUrl3}}" alt=" "> -->
+              <img src="https://www.ourquadcities.com/wp-content/uploads/sites/19/2021/03/SLP2020102610.jpg?w=1280" alt=" ">
             </div>
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
@@ -26,10 +41,17 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
-        </div>
+      </div>
+  </div>
+  </div>
+</div>
+
   <div class="modal-footer">
       <button type="button" class="btn btn-success" (click)="openUpdateModal()">Edit Pin</button>
       <button type="button" class="btn btn-danger" (click)="openDeleteModal()">Delete Pin</button>
       <button type="button" class="btn btn-warning" (click)="activeModalService.dismiss('Cross click')">Close</button>
   </div>
+
+
+
 </div>
