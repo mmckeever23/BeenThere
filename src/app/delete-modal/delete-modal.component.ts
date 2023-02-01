@@ -29,7 +29,7 @@ export class DeleteModalComponent {
   onSubmit(){
     this.pinDataService.deletePin(this.pin.id).subscribe({
       next: (data) => {
-        alert("Pin deleted!");
+        alert("Pin deleted! Press 'Save Updates' to see changes reflected.");
         this.modalService.dismissAll();
       },
       error: (error) => {

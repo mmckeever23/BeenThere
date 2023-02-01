@@ -19,8 +19,7 @@ img {
     height: 500px;
     width: 100%;
     padding-top: 25px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-right: 15px;
     padding-bottom: 25px;
  }
 
@@ -30,11 +29,10 @@ img[src=""] {
 
 .blue {
     padding-top: 20px;
-    font-weight: bold;
     color: #337AB7;
     padding-left: 15px;
 }
 
-h5 {
+h6 {
     padding-left: 15px;
 }

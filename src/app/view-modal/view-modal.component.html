@@ -1,22 +1,19 @@
 <div class="modal-content">
-
   <div class="modal-header text-center d-block">
     <h4 class="modal-title d-inline-block">My Trip to {{pin.name}}</h4>
   </div>
-
   <div class="container">
     <div class="row">
       <div class = "col">
         <div class="form-group">
-          <h4 class="blue">Event Title: </h4>
-          <h5>{{pin.title}}</h5>
-          <h4 class="blue">Event Date: </h4>
-          <h5>{{pin.departDate}}</h5>
-          <h4 class="blue">Event Log: </h4>
-          <h5>{{pin.log}}</h5>
+          <h4 class="blue">Trip Description: </h4>
+          <h6>{{pin.title}}</h6>
+          <h4 class="blue">Trip Date: </h4>
+          <h6>{{pin.departDate}}</h6>
+          <h4 class="blue">Trip Log: </h4>
+          <h6>{{pin.log}}</h6>
         </div>
       </div>
-
       <div class = "col">
         <div id="carousel" class="carousel slide" data-bs-ride="carousel" data-interval="false">
             <div class="carousel-inner">
@@ -39,13 +36,9 @@
               <span class="visually-hidden">Next</span>
             </button>
         </div>
-
       </div>
-
     </div>
-
   </div>
-
   <div class="modal-footer">
       <button type="button" class="btn btn-success" (click)="openUpdateModal()">Edit Pin</button>
       <button type="button" class="btn btn-danger" (click)="openDeleteModal()">Delete Pin</button>

@@ -14,7 +14,7 @@ export class PinModalComponent {
   @Input() id: any;
   @Input() pins: any;
 
-  constructor(private pinDataService: PindataService, public modalService: NgbActiveModal){}
+  constructor(private pinDataService: PindataService, public activeModalService: NgbActiveModal){}
 
   ngOnInit(): void {
     this.pinDataService.getPinById(this.pin.id).subscribe({
@@ -30,8 +30,8 @@ export class PinModalComponent {
   onSubmit(){
     this.pinDataService.savePin(this.pin).subscribe({
       next: (data) => {
-        alert("Pin created!");
-        this.modalService.dismiss();
+        alert("Pin created! Press 'Save Updates' to save the pin.");
+        this.activeModalService.dismiss();
       },
       error: (error) => {
         alert("There was a problem creating this pin.");

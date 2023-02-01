@@ -3,20 +3,20 @@
     <div class="modal-header text-center d-block">
         <h4 class="modal-title d-inline-block">Edit Pin for "My Trip to {{pin.name}}"</h4>
     </div>
-    <div class="form-group">
-        <label>Trip Title: </label>
-        <input type="text" class="form-control" placeholder="What was the occassion for this trip?" id="title" name="title" [(ngModel)]="pin.title">
-        <form class="form-inline">
-            <label>Date: </label>
+    <div class="modal-body">
+        <div class="form-group">
+            <h5>Trip Description: </h5>
+            <input type="text" class="form-control" placeholder="What was the occassion for this trip?" id="title" name="title" [(ngModel)]="pin.title">
+            <h5>Date: </h5>
             <input type="date" class="form-control w-25" id="depart" name="depart" [(ngModel)]="pin.departDate">
-        </form>
-        <label>Trip Log: </label>
-        <textarea class="form-control" placeholder='What did you do there?' rows='5' cols='15' id="log" name="log" [(ngModel)]="pin.log"></textarea>
-        <label>Photos: </label>
-        <input type="text" class="form-control" placeholder="Paste image URL here" id="imageUrl1" name="imageUrl1" [(ngModel)]="pin.imageUrl1">
-        <input type="text" class="form-control" placeholder="Paste image URL here" id="imageUrl2" name="imageUrl2" [(ngModel)]="pin.imageUrl2">
-        <input type="text" class="form-control" placeholder="Paste image URL here" id="imageUrl3" name="imageUrl3" [(ngModel)]="pin.imageUrl3">
-   </div>
+            <h5>Trip Log: </h5>
+            <textarea class="form-control" placeholder='What did you do there?' rows='5' cols='15' id="log" name="log" [(ngModel)]="pin.log"></textarea>
+            <h5>Photos: </h5>
+            <input type="text" class="form-control" placeholder="Paste image URL here" id="imageUrl1" name="imageUrl1" [(ngModel)]="pin.imageUrl1">
+            <input type="text" class="form-control" placeholder="Paste image URL here" id="imageUrl2" name="imageUrl2" [(ngModel)]="pin.imageUrl2">
+            <input type="text" class="form-control" placeholder="Paste image URL here" id="imageUrl3" name="imageUrl3" [(ngModel)]="pin.imageUrl3">
+        </div>
+    </div>
     <div class="modal-footer">
             <button type="submit" class="btn btn-success">Update</button>
         <button type="button" class="btn btn-warning" (click)="modalService.dismiss('Cross click')">Close</button>
