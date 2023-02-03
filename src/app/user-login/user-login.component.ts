@@ -34,6 +34,11 @@ export class UserLoginComponent implements OnInit {
   userLogin(login: NgForm){
     this.loginuserservice.loginUser(this.user).subscribe({
       next: (data) => {
+        let string = JSON.stringify(data);
+        string = string.substring(string.indexOf(":")+1);
+        string = string.substring(0, string.indexOf(","));
+        let idForTable = Number(string);
+        console.log(idForTable);
       this.activeModalService.dismiss();
       this.dropPins();
     },
