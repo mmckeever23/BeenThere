@@ -104,6 +104,7 @@ export class AppComponent implements OnInit{
     modalRef.componentInstance.pin = this.pin;
     modalRef.componentInstance.pins = this.pins;
     modalRef.componentInstance.id = this.pin.id;
+    
   }
 
 // Google Maps JavaScript API Loader

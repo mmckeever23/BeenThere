@@ -7,6 +7,7 @@ import { PindataService } from '../pindata.service';
   templateUrl: './pin-modal.component.html',
   styleUrls: ['./pin-modal.component.css']
 })
+
 export class PinModalComponent {
 
   @Input() data: any;
@@ -15,7 +16,7 @@ export class PinModalComponent {
   @Input() pins: any;
 
   constructor(private pinDataService: PindataService, public activeModalService: NgbActiveModal){}
-
+  
   ngOnInit(): void {
     this.pinDataService.getPinById(this.pin.id).subscribe({
       next: (data) => {
