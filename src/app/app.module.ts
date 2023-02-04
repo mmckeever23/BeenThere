@@ -13,6 +13,7 @@ import { ViewModalComponent } from './view-modal/view-modal.component';
 import { UpdatePinComponent } from './update-pin/update-pin.component';
 import { DeleteModalComponent } from './delete-modal/delete-modal.component';
 import { ListModalComponent } from './list-modal/list-modal.component';
+import { OrderByPipe} from './list-modal/order-by.pipe';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ListModalComponent } from './list-modal/list-modal.component';
     UpdatePinComponent,
     DeleteModalComponent,
     ListModalComponent,
+    OrderByPipe,
   ],
   imports: [
     BrowserModule,

@@ -14,7 +14,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let pin of pins">
+          <tr *ngFor="let pin of pins | orderBy:sortFn">
             <td>{{pin.departDate}}</td>
             <td>{{pin.name}}</td>
             <td>{{pin.title}}</td>
