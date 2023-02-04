@@ -8,6 +8,7 @@ import { PindataService } from './pindata.service';
 import { ViewModalComponent } from './view-modal/view-modal.component';
 import { UpdatePinComponent } from './update-pin/update-pin.component';
 import { ListModalComponent } from './list-modal/list-modal.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-root',
