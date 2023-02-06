@@ -51,6 +51,7 @@ public class PinController {
         pin.setImageUrl1(pinDetails.getImageUrl1());
         pin.setImageUrl2(pinDetails.getImageUrl2());
         pin.setImageUrl3(pinDetails.getImageUrl3());
+        pin.setUserId(pinDetails.getUserId());
         Pin updatedPin = pinRepo.save(pin);
         return ResponseEntity.ok(updatedPin);
     }
