@@ -37,9 +37,12 @@ public class Pin {
     @Column(name="image_Url_3")
     private String imageUrl3;
 
+    @Column(name="user_Id")
+    private Integer userId;
+
     public Pin() {}
 
-    public Pin(String name, String lat, String lng, String title, String departDate, String log, String imageUrl1, String imageUrl2, String imageUrl3) {
+    public Pin(String name, String lat, String lng, String title, String departDate, String log, String imageUrl1, String imageUrl2, String imageUrl3, Integer userId) {
         this.name = name;
         this.lat = lat;
         this.lng = lng;
@@ -49,6 +52,7 @@ public class Pin {
         this.imageUrl1 = imageUrl1;
         this.imageUrl2 = imageUrl2;
         this.imageUrl3 = imageUrl3;
+        this.userId = userId;
     }
 
     public long getId() {
@@ -129,5 +133,13 @@ public class Pin {
 
     public void setImageUrl3(String imageUrl3) {
         this.imageUrl3 = imageUrl3;
+    }
+
+    public Integer getUserId() {
+      return userId;
+    }
+
+    public void setUserId(Integer userId) {
+      this.userId = userId;
     }
 }
