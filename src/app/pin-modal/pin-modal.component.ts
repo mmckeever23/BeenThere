@@ -21,15 +21,16 @@ export class PinModalComponent {
       next: (data) => {
         this.pin = data;
       }, 
-      error: (error) => {
-        console.log(error)
-      }
+      // error: (error) => {
+      //   console.log(error)
+      // }
     })
   }
 
   onSubmit(){
     this.pinDataService.savePin(this.pin).subscribe({
       next: (data) => {
+        this.pin.userID = (sessionStorage.getItem("currentUserId"))
         alert("Pin saved!");
         this.modalService.dismiss();
       },

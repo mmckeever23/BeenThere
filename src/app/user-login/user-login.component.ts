@@ -23,11 +23,14 @@ export class UserLoginComponent implements OnInit {
   userLogin(login: NgForm){
     this.loginuserservice.loginUser(this.user).subscribe({
       next: (data) => {
-      this.activeModalService.dismiss();
-      let string = JSON.stringify(data);
-      string = string.substring(string.indexOf(":")+1);
-      string = string.substring(0, string.indexOf(","));
-      let idForTable = Number(string);
+        const userDetails = JSON.parse(JSON.stringify(data));
+        sessionStorage.setItem("currentUserId", userDetails.id)
+        // console.log(sessionStorage.getItem("currentUserId"));
+        this.activeModalService.dismiss();
+      // let string = JSON.stringify(data);
+      // string = string.substring(string.indexOf(":")+1);
+      // string = string.substring(0, string.indexOf(","));
+      // let idForTable = Number(string);
     },
       error: (error) => {
         alert("Username and/or password not correct.");
