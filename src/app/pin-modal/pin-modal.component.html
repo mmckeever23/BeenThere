@@ -5,21 +5,22 @@
     </div>
     <div class="modal-body">
         <div class="form-group">
-            <label>Trip Title: </label>
+            <h5>Trip Description: </h5>
             <input type="text" class="form-control" placeholder="What was the occassion for this trip?" id="title" name="title" [(ngModel)]="pin.title">
-            <label>Date: </label>
+            <h5>Date: </h5>
             <input type="date" class="form-control w-25" id="depart" name="depart" [(ngModel)]="pin.departDate">
-            <label>Trip Log: </label>
+            <h5>Trip Log: </h5>
             <textarea class="form-control" placeholder='What did you do there?' rows='5' cols='15' id="log" name="log" [(ngModel)]="pin.log"></textarea>
-            <label>Photos: </label>
+            <h5>Photos: </h5>
             <input type="text" class="form-control" placeholder="Paste image URL here" id="imageUrl1" name="imageUrl1" [(ngModel)]="pin.imageUrl1">
             <input type="text" class="form-control" placeholder="Paste image URL here" id="imageUrl2" name="imageUrl2" [(ngModel)]="pin.imageUrl2">
             <input type="text" class="form-control" placeholder="Paste image URL here" id="imageUrl3" name="imageUrl3" [(ngModel)]="pin.imageUrl3">
+            <input [hidden]="true" type="number" class="form-control" placeholder="TEST" id="userId" name="userId" [(ngModel)]="pin.userId">
         </div>
     </div>
     <div class="modal-footer">
         <button type="submit" class="btn btn-success">Create Pin</button>
-        <button type="button" class="btn btn-warning" (click)="modalService.dismiss('Cross click')">Close</button>
+        <button type="button" class="btn btn-warning" (click)="activeModalService.dismiss('Cross click')">Close</button>
     </div>
 </div>
 </form>

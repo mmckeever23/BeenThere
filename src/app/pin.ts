@@ -1,4 +1,5 @@
 export class Pin {
+    userId!: number;
     id!: number;
     name!: string;
     lat!: string;

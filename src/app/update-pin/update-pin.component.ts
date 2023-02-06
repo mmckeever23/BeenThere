@@ -36,7 +36,7 @@ export class UpdatePinComponent {
   onSubmit(){
     this.pinDataService.updatePin(this.pin.id, this.pin).subscribe({
       next: (data) => {
-        alert("Pin updated!");
+        alert("Pin updated! Press 'Save Updates' to see changes reflected.");
         this.modalService.dismiss();
         },
       error: (error) => {

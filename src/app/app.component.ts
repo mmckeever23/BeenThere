@@ -7,6 +7,8 @@ import { Pin } from './pin';
 import { PindataService } from './pindata.service';
 import { ViewModalComponent } from './view-modal/view-modal.component';
 import { UpdatePinComponent } from './update-pin/update-pin.component';
+import { ListModalComponent } from './list-modal/list-modal.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -42,7 +44,7 @@ export class AppComponent implements OnInit{
         }
       });
       for (let i = 0; i<this.pins.length; i++) {
-
+        
         let marker = new google.maps.Marker({
           position: { lat: Number(this.pins[i].lat), lng: Number(this.pins[i].lng) },
           map,
@@ -60,7 +62,7 @@ export class AppComponent implements OnInit{
           this.pin.imageUrl2=this.pins[i].imageUrl2;
           this.pin.imageUrl3=this.pins[i].imageUrl3;
           this.openViewModal();
-          })  
+          }) 
         }
       })
     alert("Updates saved!")
@@ -95,6 +97,14 @@ export class AppComponent implements OnInit{
     modalRef.componentInstance.pin = this.pin;
     modalRef.componentInstance.pins = this.pins;
     modalRef.componentInstance.id = this.pin.id;
+  }
+
+  openListModal(){
+    const modalRef = this.modalService.open(ListModalComponent, {size: 'lg', modalDialogClass: 'modal-dialog-centered'});
+    modalRef.componentInstance.pin = this.pin;
+    modalRef.componentInstance.pins = this.pins;
+    modalRef.componentInstance.id = this.pin.id;
+    
   }
 
 // Google Maps JavaScript API Loader

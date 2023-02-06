@@ -34,8 +34,10 @@ export class UserLoginComponent implements OnInit {
   userLogin(login: NgForm){
     this.loginuserservice.loginUser(this.user).subscribe({
       next: (data) => {
-      this.activeModalService.dismiss();
-      this.dropPins();
+        const userDetails = JSON.parse(JSON.stringify(data));
+        sessionStorage.setItem("currentUserId", userDetails.id)
+        this.activeModalService.dismiss();
+        this.dropPins();
     },
       error: (error) => {
         alert("Username and/or password not correct.");
@@ -76,12 +78,6 @@ export class UserLoginComponent implements OnInit {
 
     let map: google.maps.Map;
 
-// Render all pins
-
-  this.pinDataService.getAllPins().subscribe(data=>{
-    this.pins=data;
-  })
-
 // Loader function
 
     loader.load().then(() => {
@@ -113,7 +109,7 @@ export class UserLoginComponent implements OnInit {
 //Render saved pins
 
       for (let i = 0; i<this.pins.length; i++) {
-
+        if (this.pins[i].userId === Number(sessionStorage.getItem("currentUserId"))) {
         let marker = new google.maps.Marker({
           position: { lat: Number(this.pins[i].lat), lng: Number(this.pins[i].lng) },
           map,
@@ -133,7 +129,9 @@ export class UserLoginComponent implements OnInit {
           this.pin.imageUrl3=this.pins[i].imageUrl3;
           this.openViewModal();
           })  
+        }
       }
+
 
 // Listen for the event fired when the user selects a prediction and retrieve more details for that place
 
@@ -158,6 +156,7 @@ export class UserLoginComponent implements OnInit {
           setTimeout(()=>{this.openPinModal()}, 1000);
           this.pin.lat = String(marker.getPosition()!.lat());
           this.pin.lng = String(marker.getPosition()!.lng());
+          this.pin.userId = Number(sessionStorage.getItem("currentUserId"));
                     
 // Click handler for pre-existing marker
 
