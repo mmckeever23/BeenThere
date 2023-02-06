@@ -44,7 +44,7 @@ export class AppComponent implements OnInit{
         }
       });
       for (let i = 0; i<this.pins.length; i++) {
-
+        
         let marker = new google.maps.Marker({
           position: { lat: Number(this.pins[i].lat), lng: Number(this.pins[i].lng) },
           map,
@@ -62,7 +62,7 @@ export class AppComponent implements OnInit{
           this.pin.imageUrl2=this.pins[i].imageUrl2;
           this.pin.imageUrl3=this.pins[i].imageUrl3;
           this.openViewModal();
-          })  
+          }) 
         }
       })
     alert("Updates saved!")
