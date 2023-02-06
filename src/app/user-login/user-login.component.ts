@@ -81,12 +81,6 @@ export class UserLoginComponent implements OnInit {
 
     let map: google.maps.Map;
 
-// Render all pins
-
-  this.pinDataService.getAllPins().subscribe(data=>{
-    this.pins=data;
-  })
-
 // Loader function
 
     loader.load().then(() => {
