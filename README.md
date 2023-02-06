@@ -8,4 +8,4 @@ BeenThere is built using TypeScript in an Angular framework on the front end and
 
 ## Backend Application
 
-The backend of this application is available at: https://github.com/mmckeever23/BeenThere-Backend
+The backend of this application is available at: https://github.com/mmckeever23/BeenThereBackend
