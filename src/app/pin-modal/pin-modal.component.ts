@@ -21,9 +21,6 @@ export class PinModalComponent {
     this.pinDataService.getPinById(this.pin.id).subscribe({
       next: (data) => {
         this.pin = data;
-      }, 
-      error: (error) => {
-        console.log(error)
       }
     })
   }
