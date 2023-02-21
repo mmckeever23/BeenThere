@@ -5,7 +5,3 @@ BeenThere is a travel journaling application utilizing Google Maps API. After cr
 ## Technologies Used
 
 BeenThere is built using TypeScript in an Angular framework on the front end and Java in a Spring Boot framework, connected to a SQL database, on the backend.  
-
-## Backend Application
-
-The backend of this application is available at: https://github.com/mmckeever23/BeenThereBackend
